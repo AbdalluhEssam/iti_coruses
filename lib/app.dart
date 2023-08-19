@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +11,18 @@ class ObourApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return const MaterialApp(
+    return  MaterialApp(
       title: "Obour + Fuure",
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.light,
-      home: HomeScreen(),
-      
+      home: const HomeScreen(),
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarIconBrightness: Brightness.dark,
+            statusBarColor: Colors.white
+          ),
+        )
+      ),
     );
   }
 }
