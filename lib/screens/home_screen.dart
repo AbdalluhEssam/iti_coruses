@@ -72,6 +72,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> image = [
+      "assets/images/home_1.png",
+      "assets/images/home_2.png",
+      "assets/images/home_3.png",
+      "assets/images/abd.jpeg",
+      "assets/images/home_1.png",
+      "assets/images/home_2.png",
+      "assets/images/home_3.png",
+      "assets/images/abd.jpeg",
+    ];
     List<User> myUsers = List.generate(
         8,
         (index) => User(
@@ -277,7 +287,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(
-            height: vis == false ? 0 : 110,
+            height: vis == false ? 0 : 80,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               scrollDirection: Axis.horizontal,
@@ -287,14 +297,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     visible: vis,
                     child: Opacity(
                       opacity: show == false ? 0.8 : 1,
-                      child: SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Image.asset("assets/images/home_2.png"),
+                      child: Container(
+                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                        decoration:  BoxDecoration(
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Image.asset(image[index] , width: 80  , fit: BoxFit.cover,),
                       ),
                     )),
               ),
-              itemCount: 5,
+              itemCount: 8,
               separatorBuilder: (BuildContext context, int index) {
                 return const SizedBox(
                   width: 8,
