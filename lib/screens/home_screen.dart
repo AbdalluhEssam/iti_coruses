@@ -1,4 +1,3 @@
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
@@ -45,17 +44,36 @@ import '../widgets/contact_card.dart';
 ///
 typedef Feature = String;
 
+bool show = false;
+
+bool vis = false;
+
 void clickME() {
   LogManager.logToConsole("You can click me");
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  void showOn() {
+    show = !show;
+    setState(() {});
+  }
+
+  void visOn() {
+    vis = !vis;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     List<User> myUsers = List.generate(
-        20,
+        8,
         (index) => User(
             name: Faker().person.name(),
             id: index,
@@ -108,7 +126,6 @@ class HomeScreen extends StatelessWidget {
                               image: AssetImage("assets/images/home_1.png"),
                               fit: BoxFit.cover)),
                     )),
-
                 Container(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   decoration: const BoxDecoration(
@@ -132,14 +149,14 @@ class HomeScreen extends StatelessWidget {
           ),
           Column(
             children: const [
-              Text("Abdalluh Essam" ,style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold
-              ),),
-              Text("About..." ,style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold
-              ),)
+              Text(
+                "Abdalluh Essam",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                "About...",
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              )
             ],
           ),
           const SizedBox(
@@ -157,22 +174,18 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OutlinedButton(
-                    onPressed: () {},
-                        style: ButtonStyle(minimumSize: MaterialStateProperty.all<Size>(const Size(110, 35))),
-                    child: const Text(
-                      "Like",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all<Size>(
+                                const Size(110, 35))),
+                        child: const Text(
+                          "Like",
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
                       const Text(
                         "500",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ],
                   ),
@@ -180,23 +193,18 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OutlinedButton(
-                    onPressed: () {},
-                        style: ButtonStyle(minimumSize: MaterialStateProperty.all<Size>(const Size(110, 35))),
-
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all<Size>(
+                                const Size(110, 35))),
                         child: const Text(
-                      "Views Profile",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black
+                          "Views Profile",
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
                       const Text(
                         "200",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ],
                   ),
@@ -204,23 +212,18 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OutlinedButton(
-                    onPressed: () {},
-                        style: ButtonStyle(minimumSize: MaterialStateProperty.all<Size>(const Size(110, 35))),
-
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            minimumSize: MaterialStateProperty.all<Size>(
+                                const Size(110, 35))),
                         child: const Text(
-                      "Followers",
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black
+                          "Followers",
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
                       ),
-                    ),
-                  ),
                       const Text(
                         "4K",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.black),
                       ),
                     ],
                   ),
@@ -233,14 +236,14 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {},
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blueAccent)),
+                          MaterialStateProperty.all<Color>(Colors.blueAccent)),
                   icon: const Icon(Icons.add),
                   label: const Text("Follow")),
               ElevatedButton.icon(
                   onPressed: () {},
                   style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.red)),
+                          MaterialStateProperty.all<Color>(Colors.red)),
                   icon: const Icon(Icons.block),
                   label: const Text("Block")),
               OutlinedButton(
@@ -262,10 +265,50 @@ class HomeScreen extends StatelessWidget {
           //         .toList(),
           //   ),
           // )
+          InkWell(
+            onTap: visOn,
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              alignment: Alignment.centerLeft,
+              child: const Text(
+                "Photos",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: vis == false ? 0 : 110,
+            child: ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: showOn,
+                child: Visibility(
+                    visible: vis,
+                    child: Opacity(
+                      opacity: show == false ? 0.8 : 1,
+                      child: SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: Image.asset("assets/images/home_2.png"),
+                      ),
+                    )),
+              ),
+              itemCount: 5,
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(
+                  width: 8,
+                );
+              },
+            ),
+          ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             alignment: Alignment.centerLeft,
-            child: const Text("Friends" , style: TextStyle(fontWeight: FontWeight.bold , fontSize: 25),),
+            child: const Text(
+              "Friends",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -275,7 +318,8 @@ class HomeScreen extends StatelessWidget {
               itemCount: myUsers.length,
               itemBuilder: (_, int index) {
                 var user = myUsers[index];
-                return ContactCard(name: user.name, subtitle: user.title, info: user.info);
+                return ContactCard(
+                    name: user.name, subtitle: user.title, info: user.info);
               },
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(

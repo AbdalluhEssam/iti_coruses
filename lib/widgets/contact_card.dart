@@ -19,7 +19,7 @@ class ContactCard extends StatelessWidget {
         ),
         title: Text(name),
         subtitle: Text(subtitle),
-        trailing: OutlinedButton(onPressed: (){}, child:  const Icon(Icons.add),),
+        trailing: TextButton(onPressed: (){}, child:  const Icon(Icons.add),),
       ),
     );
   }
