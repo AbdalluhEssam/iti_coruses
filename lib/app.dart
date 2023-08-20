@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:iti_coruses/screens/onborading.dart';
 
 import 'screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class ObourApp extends StatelessWidget {
       home: const HomeScreen(),
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
+          elevation: 0,
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarIconBrightness: Brightness.dark,
             statusBarColor: Colors.white

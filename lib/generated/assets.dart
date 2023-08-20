@@ -5,9 +5,13 @@ class Assets {
   static const String fontsCairoBlack = 'assets/fonts/Cairo-Black.ttf';
   static const String fontsCairoMedium = 'assets/fonts/Cairo-Medium.ttf';
   static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
+  static const String fontsInterTightItalicVariableFontWght = 'assets/fonts/InterTight-Italic-VariableFont_wght.ttf';
+  static const String fontsInterTightVariableFontWght = 'assets/fonts/InterTight-VariableFont_wght.ttf';
   static const String imagesAbd = 'assets/images/abd.jpeg';
   static const String imagesHome1 = 'assets/images/home_1.png';
   static const String imagesHome2 = 'assets/images/home_2.png';
   static const String imagesHome3 = 'assets/images/home_3.png';
+  static const String imagesImg = 'assets/images/img.png';
+  static const String imagesImg1 = 'assets/images/img_1.png';
 
 }

@@ -84,6 +84,13 @@ flutter:
           weight: 500
         - asset: assets/fonts/Cairo-Regular.ttf
           weight: 400
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/InterTight-Italic-VariableFont_wght.ttf
+          weight: 600
+        - asset: assets/fonts/InterTight-VariableFont_wght.ttf
+          weight: 500
+
 
 
   #

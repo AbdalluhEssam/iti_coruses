@@ -124,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: 185,
             child: Stack(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
+              // clipBehavior: Clip.antiAliasWithSaveLayer,
               alignment: AlignmentDirectional.bottomCenter,
               children: [
                 Align(
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               fit: BoxFit.cover)),
                     )),
                 Container(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  // clipBehavior: Clip.antiAliasWithSaveLayer,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.white,
@@ -286,7 +286,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          SizedBox(
+          AnimatedContainer(
+            duration: const Duration(seconds: 1),
             height: vis == false ? 0 : 80,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -330,8 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: myUsers.length,
               itemBuilder: (_, int index) {
                 var user = myUsers[index];
-                return ContactCard(
-                    name: user.name, subtitle: user.title, info: user.info);
+                return ContactCard(name: user.name, subtitle: user.title, info: user.info);
               },
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(
