@@ -1,8 +1,9 @@
-import 'package:faker/faker.dart';
-import 'package:flutter/material.dart';
-
 import '../models/user.dart';
 import '../services/log_manager.dart';
+import 'package:faker/faker.dart';
+import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
 import '../widgets/contact_card.dart';
 
 //! TODO:
@@ -42,226 +43,170 @@ import '../widgets/contact_card.dart';
 ///https://www.youtube.com/watch?v=IOyq-eTRhvo&vl=ent
 /// /// 6-[Spacer]
 ///
+///
+
+//Stateless vs stateful : DOne
+//text field: Done
+//form:DOne
+//building ui
+//Navigation
+
 typedef Feature = String;
-
-bool show = false;
-
-bool vis = false;
 
 void clickME() {
   LogManager.logToConsole("You can click me");
 }
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  void showOn() {
-    show = !show;
-    setState(() {});
-  }
-
-  void visOn() {
-    vis = !vis;
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    List<String> image = [
-      "assets/images/home_1.png",
-      "assets/images/home_2.png",
-      "assets/images/home_3.png",
-      "assets/images/abd.jpeg",
-      "assets/images/home_1.png",
-      "assets/images/home_2.png",
-      "assets/images/home_3.png",
-      "assets/images/abd.jpeg",
-    ];
     List<User> myUsers = List.generate(
-        8,
+        20,
         (index) => User(
+          
             name: Faker().person.name(),
             id: index,
+            isActive: false,
             title: Faker().job.title(),
             info: Faker().vehicle.yearMakeModel()));
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Obour Land",
           style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+            color: Colors.white.withOpacity(0.3),
           ),
         ),
-        elevation: 0,
-        centerTitle: false,
-        backgroundColor: Colors.white,
-        titleSpacing: 20,
-        toolbarHeight: 60,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: Colors.black,
-              )),
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications_active_outlined,
-                color: Colors.black,
-              )),
-        ],
+        centerTitle: true,
+        backgroundColor: Colors.indigo,
       ),
-      body: ListView(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 185,
-            child: Stack(
-              // clipBehavior: Clip.antiAliasWithSaveLayer,
-              alignment: AlignmentDirectional.bottomCenter,
-              children: [
-                Align(
-                    alignment: AlignmentDirectional.topCenter,
-                    child: Container(
-                      height: 150,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/home_1.png"),
-                              fit: BoxFit.cover)),
-                    )),
-                Container(
-                  // clipBehavior: Clip.antiAliasWithSaveLayer,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                  ),
-                  child: const CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 38,
-                      backgroundImage: AssetImage("assets/images/abd.jpeg"),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
           Column(
-            children: const [
-              Text(
-                "Abdalluh Essam",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "About...",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 8,
-          ),
-          Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              width: double.infinity,
-              constraints: const BoxConstraints(minHeight: 100),
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(110, 35))),
-                        child: const Text(
-                          "Like",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
-                        ),
-                      ),
-                      const Text(
-                        "500",
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(110, 35))),
-                        child: const Text(
-                          "Views Profile",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
-                        ),
-                      ),
-                      const Text(
-                        "200",
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OutlinedButton(
-                        onPressed: () {},
-                        style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all<Size>(
-                                const Size(110, 35))),
-                        child: const Text(
-                          "Followers",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
-                        ),
-                      ),
-                      const Text(
-                        "4K",
-                        style: TextStyle(fontSize: 14, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ],
-              )),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                    // style: const ButtonStyle(
+                    //     backgroundColor: MaterialStatePropertyAll(Colors.amber),
+                    //     minimumSize: MaterialStatePropertyAll(Size(70, 35)),
+                    //     maximumSize: MaterialStatePropertyAll(Size(105, 35)
+                    //         //..
+                    //         //..
+                    //         //..
+                    //         )
+                    //     // alignment:
+                    //     ),
+                    onPressed: () {},
+                    child: Text("Sign" * 3)),
+              ), //RaisedButton()
               ElevatedButton.icon(
                   onPressed: () {},
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blueAccent)),
-                  icon: const Icon(Icons.add),
-                  label: const Text("Follow")),
-              ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(),
+                  icon: const Icon(Icons.abc),
+                  label: const Text("Elevated with icon")),
+              TextButton(
                   onPressed: () {},
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red)),
-                  icon: const Icon(Icons.block),
-                  label: const Text("Block")),
+                  child: const Text("TextButton")), //FlatButton()
               OutlinedButton(
                   onPressed: () {},
                   child: const Text(
-                    "Update Profile",
+                    "OutlineButton",
                   )), //OutlineButton(),
+              MaterialButton(
+                  onPressed: () {}, child: const Text("MaterialButton"))
             ],
+          ),
+          // Container(
+          //   color: Colors.blue,
+          //   width: 200,
+          //   height: 200,
+          //   alignment: AlignmentDirectional.topCenter,
+          //   child: const Icon(Icons.person),
+          // ),
+          Transform.rotate(
+            angle: math.pi * .5,
+            child: Opacity(
+              opacity: 0.1,
+              child: Container(
+                width: 150,
+                // height: 100,
+                constraints: const BoxConstraints(minHeight: 75),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  //  shape: BoxShape.circle
+                ),
+                alignment: Alignment.center,
+                child: const Text(
+                  "Element 1",
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Offstage(
+            offstage: false,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: GestureDetector(
+                    onLongPress: () {
+                      LogManager.logToConsole("long press");
+                    },
+                    child: Container(
+                      width: 75,
+                      height: 75,
+                      alignment: Alignment.center,
+                      color: Colors.blue[100],
+                      child: const Text(
+                        "Element 2a",
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ),
+                ),
+                //TEAR-OFF
+                InkWell(
+                  onTap: clickME,
+                  hoverColor: Colors.blue,
+                  focusColor: Colors.blue,
+                  onHover: (value) {
+                    print("hovering");
+                  },
+                  child: Container(
+                    width: 75,
+                    height: 75,
+                    alignment: Alignment.center,
+                    color: Colors.red[300],
+                    child: const Text(
+                      "Element 2b",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    width: 75,
+                    height: 75,
+                    alignment: Alignment.center,
+                    color: Colors.green[200],
+                    child: const Text(
+                      "Element 2c",
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           // const ContactCard(),
           // Expanded(
@@ -275,68 +220,44 @@ class _HomeScreenState extends State<HomeScreen> {
           //         .toList(),
           //   ),
           // )
-          InkWell(
-            onTap: visOn,
+          Offstage(
+            offstage: true,
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              alignment: Alignment.centerLeft,
-              child: const Text(
-                "Photos",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-              ),
+              width: 200,
+              height: 200,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.red.withOpacity(0.1),
+                      spreadRadius: 2,
+                      blurRadius: 2,
+                      offset: const Offset(-1, -2),
+                    )
+                  ],
+                  image: const DecorationImage(
+                    image: AssetImage("assets/images/home_1.png"),
+                  )),
             ),
           ),
-          AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            height: vis == false ? 0 : 80,
+
+          Expanded(
             child: ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => GestureDetector(
-                onTap: showOn,
-                child: Visibility(
-                    visible: vis,
-                    child: Opacity(
-                      opacity: show == false ? 0.8 : 1,
-                      child: Container(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        decoration:  BoxDecoration(
-                          borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: Image.asset(image[index] , width: 80  , fit: BoxFit.cover,),
-                      ),
-                    )),
-              ),
-              itemCount: 8,
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  width: 8,
-                );
-              },
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            alignment: Alignment.centerLeft,
-            child: const Text(
-              "Friends",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
               itemCount: myUsers.length,
               itemBuilder: (_, int index) {
                 var user = myUsers[index];
-                return ContactCard(name: user.name, subtitle: user.title, info: user.info);
+                return ContactCard(
+                    id: index.toString(),
+                    name: "$index ${user.name}",
+                    subtitle: user.title,
+                    info: user.info);
               },
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(
-                color: Colors.grey,
-                thickness: 2,
+                color: Colors.indigo,
+                thickness: 3,
+                endIndent: 20,
+                indent: 20,
               ),
             ),
           )
@@ -348,7 +269,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: const Icon(Icons.add_a_photo_outlined),
+        child: const Text("Click me"),
       ),
     );
   }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iti_coruses/constants/color_manager.dart';
+import 'package:iti_coruses/screens/home_screen.dart';
+import 'package:iti_coruses/services/extension.dart';
+
+import '../constants/route_names.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({super.key});
@@ -11,7 +16,7 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(38, 50, 56, 1),
+      backgroundColor: ColorManager.textField,
       appBar: AppBar(
         toolbarHeight: 0,
       ),
@@ -36,26 +41,44 @@ class _OnBoardingState extends State<OnBoarding> {
                 )),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "Manage\nyour\nTask with",
                   style: TextStyle(
-
-                      fontSize: 55,
+                      letterSpacing: 4,
+                      fontSize: 50,
                       height: 1.1,
                       fontWeight: FontWeight.w600,
                       fontFamily: "Inter",
-                      color: Color.fromRGBO(255, 255, 255, 1)),
+                      color: Colors.white),
                 ),
                 Text(
                   "DayTask",
                   style: TextStyle(
-                      fontSize: 55,
+                      fontSize: 50,
                       fontFamily: "Inter",
                       height: 1.1,
+                      letterSpacing: 1.5,
                       fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(254, 211, 106, 1)),
+                      color: ColorManager.mustardYellow),
                 ),
+                const SizedBox(
+                  height: 30,
+                ),
+                MaterialButton(
+                  onPressed: () {
+                    context.navigator.pushNamed(RouteNames.home);
+                  },
+                  color: const Color(0xfffed36a),
+                  height: 65,
+                  minWidth: 400,
+                  child: const Text("Let’s Start",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+
+                      )),
+                )
               ],
             )
           ],
