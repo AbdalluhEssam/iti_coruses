@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'color_manager.dart';
 
@@ -18,5 +19,10 @@ class ThemeManager {
       // )
       ),
       appBarTheme: AppBarTheme(
+        elevation: 0,
+        systemOverlayStyle:SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.light,
+          statusBarColor: ColorManager.textField
+        ) ,
           backgroundColor: ColorManager.textField, centerTitle: true));
 }

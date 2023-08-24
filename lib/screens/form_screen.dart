@@ -224,7 +224,7 @@ class _FormScreenState extends State<FormScreen> {
               ),
               IconButton(
                   onPressed: () {
-                    context.navigator.pushNamed(RouteNames.thirdPageRouteName);
+                    context.navigator.pushNamed(RouteNames.testScreen);
                     // Navigator.of(context).push(MaterialPageRoute(
                     //     builder: (context) {
                     //       return const ThirdScreen(

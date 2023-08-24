@@ -1,48 +1,32 @@
-
 import 'package:flutter/material.dart';
-import 'package:iti_coruses/services/extension.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/default_app_bar.dart';
-import 'fourth_screen.dart';
 
-//.....Generics
-//....mixins
+int counter = 0;
 
-//...................................................isolate
+var incr = StateProvider.autoDispose((ref) => counter++);
 
-class ThirdScreen extends StatelessWidget {
-  const ThirdScreen({
+class TestScreen extends ConsumerWidget {
+  const TestScreen({
     super.key,
     required this.title,
   });
+
   final String title;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final count = ref.watch(incr);
     return Scaffold(
       appBar: MyAppBar(titleText: title),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text(
-            title,
-            style: context.textTheme.headlineMedium,
-          ),
-          TextButton(
-              // onPressed:onTap,
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) {
-                    return const FourthScreen(
-                      title: "Fourth Page",
-                    );
-                  },
-                ));
-              },
-              child: const Text("next >"))
-        ],
-      )),
+        child: Text("Count : $counter",style: const TextStyle(fontSize: 30),),
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            ref.read(incr.notifier).update((state) => counter++) ;
+          },
+          child: const Icon(Icons.add)),
     );
   }
 }

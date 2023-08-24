@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   faker:
   intl: ^0.18.1
+  flutter_riverpod:
 
 dev_dependencies:
   flutter_test:
@@ -90,7 +91,13 @@ flutter:
           weight: 600
         - asset: assets/fonts/InterTight-VariableFont_wght.ttf
           weight: 500
-
+    - family: PilatExtended
+      fonts:
+        - asset: assets/fonts/PilatExtended-Book.ttf
+    - family: IconBroken
+      fonts:
+        - asset: assets/fonts/icons.ttf
+          weight: 700
 
 
   #
