@@ -5,8 +5,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final String hintText;
   final String? text;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final Function()? suffixPressed;
@@ -30,13 +30,15 @@ class CustomTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        if(text !=null)
+          Text(
           text ?? "",
           style: TextStyle(
             fontSize: 15,
             color: ColorManager.textColor,
           ),
-        ),
+        ) ,
+        if(text !=null)
         const SizedBox(
           height: 10,
         ),
@@ -50,7 +52,7 @@ class CustomTextFormField extends StatelessWidget {
             readOnly: readOnly ?? false,
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              labelText: hintText ,
+              // labelText: hintText ,
               labelStyle: TextStyle(color: ColorManager.textColor),
               border: const OutlineInputBorder(
                   borderSide: BorderSide(color: Color(0xff455a64))),
@@ -59,10 +61,10 @@ class CustomTextFormField extends StatelessWidget {
               contentPadding: const EdgeInsets.all(10),
               hintText: hintText,
               hintStyle: TextStyle(color: ColorManager.textColor),
-              prefixIcon: prefixIcon,
+              prefixIcon: Icon(prefixIcon , color: Colors.white,),
               suffixIcon: suffixIcon != null
                   ? IconButton(
-                      icon: suffixIcon!,
+                      icon: Icon(suffixIcon, color: Colors.white,),
                       onPressed: suffixPressed,
                     )
                   : null,

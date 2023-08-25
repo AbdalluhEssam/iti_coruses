@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/services/extension.dart';
+import '../constants/icon_broken.dart';
 import '../constants/route_names.dart';
 import '../widgets/custom_textFormField.dart';
 
@@ -73,7 +74,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   text: "Email Address",
                   hintText: "Email",
                   keyboardType: TextInputType.emailAddress,
-                  prefixIcon: Image.asset("assets/images/img_2.png"),
+                  prefixIcon: IconBroken.Profile,
                   controller: emailController,
                 ),
                 const SizedBox(
@@ -97,18 +98,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintText: "Password",
                   keyboardType: TextInputType.emailAddress,
                   suffixIcon: isPassShow == true
-                      ? const Icon(
-                          CupertinoIcons.eye,
-                          color: Colors.white,
-                        )
-                      : Container(
-                          margin: const EdgeInsets.all(4),
-                          child: Image.asset("assets/images/img_4.png")),
-                  prefixIcon: Container(
-                      width: 10,
-                      height: 10,
-                      margin: const EdgeInsets.all(12),
-                      child: Image.asset("assets/images/img_3.png")),
+                      ? CupertinoIcons.eye_slash
+                      : IconBroken.Show,
+                  prefixIcon: IconBroken.Lock,
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -130,17 +122,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 MaterialButton(
                   onPressed: () {
                     if (formState.currentState?.validate() == true) {
-                      context.navigator.pushNamed(RouteNames.signUpScreen);
+                      context.navigator.pushNamed(RouteNames.home);
                     }
                   },
                   color: const Color(0xfffed36a),
                   height: 65,
                   minWidth: 400,
-                  child: const Text("Log In",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  child: Text("Log In",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black)),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
@@ -156,6 +145,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "Inter",
                               color: ColorManager.textColor)),
                       Container(
                         height: 1,
@@ -171,11 +161,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       minimumSize: Size.copy(const Size(double.infinity, 65)),
                     ),
                     onPressed: () {},
-                    label: const Text("Google",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        )),
+                    label: Text("Google",
+                        style: Theme.of(context).textTheme.bodyLarge),
                     icon: Image.asset(
                       "assets/images/img_5.png",
                       width: 30,
@@ -186,7 +173,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     vertical: 15,
                   ),
                   child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.navigator.pushNamed(RouteNames.signUpScreen);
+                      },
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
                         Text("Don’t have an account?",
                             style: TextStyle(

@@ -26,7 +26,6 @@ class _OnBoardingState extends State<OnBoarding> {
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Image.asset(
                   "assets/images/img.png",
                   width: 90,

@@ -20,6 +20,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignUpScreen> {
   bool isPassShow = false;
+  bool isActive = false;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formState = GlobalKey();
@@ -74,11 +75,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                   text: "Full Name",
                   hintText: "Full Name",
                   keyboardType: TextInputType.name,
-                  prefixIcon: Container(
-                    width: 10,
-                    margin: const EdgeInsets.all(11),
-                    child: Image.asset("assets/images/img_6.png"),
-                  ),
+                  prefixIcon: IconBroken.User,
                   controller: emailController,
                 ),
                 const SizedBox(
@@ -94,7 +91,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                   text: "Email Address",
                   hintText: "Email",
                   keyboardType: TextInputType.emailAddress,
-                  prefixIcon: Image.asset("assets/images/img_2.png"),
+                  prefixIcon: IconBroken.Profile,
                   controller: emailController,
                 ),
                 const SizedBox(
@@ -118,34 +115,27 @@ class _SignInScreenState extends State<SignUpScreen> {
                   hintText: "Password",
                   keyboardType: TextInputType.emailAddress,
                   suffixIcon: isPassShow == true
-                      ? const Icon(
-                          CupertinoIcons.eye,
-                          color: Colors.white,
-                        )
-                      : Container(
-                          margin: const EdgeInsets.all(4),
-                          child: Image.asset("assets/images/img_4.png")),
-                  prefixIcon: Container(
-                      width: 10,
-                      height: 10,
-                      margin: const EdgeInsets.all(12),
-                      child: Image.asset("assets/images/img_3.png")),
+                      ? CupertinoIcons.eye_slash
+                      : IconBroken.Show,
+                  prefixIcon: IconBroken.Lock,
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(onPressed: (){}, icon: Icon(IconBroken.Tick_Square)),
-                    Checkbox(
-                      tristate: true,
-                      value: true,
-                      onChanged: (value) {},
-                      checkColor: ColorManager.textColor,
-                      activeColor: ColorManager.mustardYellow,
-                    ),
+                     IconButton(
+                        alignment: AlignmentDirectional.centerStart,
+                        padding:const EdgeInsetsDirectional.only(start: 0,top: 8),
+                        onPressed: () {
+                          isActive = !isActive;
+                          setState(() {
+
+                          });
+                        },
+                        icon: Icon(IconBroken.Tick_Square,
+                            color:isActive == true ? ColorManager.mustardYellow : ColorManager.textColor)),
                     Flexible(
                       child: RichText(
                         text: TextSpan(
@@ -179,11 +169,8 @@ class _SignInScreenState extends State<SignUpScreen> {
                   color: const Color(0xfffed36a),
                   height: 65,
                   minWidth: 400,
-                  child: const Text("Log In",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  child:  Text("Log In",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black)),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
@@ -214,11 +201,8 @@ class _SignInScreenState extends State<SignUpScreen> {
                       minimumSize: Size.copy(const Size(double.infinity, 65)),
                     ),
                     onPressed: () {},
-                    label: const Text("Google",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        )),
+                    label:  Text("Google",
+                        style: Theme.of(context).textTheme.bodyLarge),
                     icon: Image.asset(
                       "assets/images/img_5.png",
                       width: 30,

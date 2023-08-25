@@ -1,4 +1,7 @@
 
+
+import 'package:flutter/material.dart';
+
 enum UserGender {
   male("Male"),
   female("Female"),
@@ -23,3 +26,14 @@ enum PaymentMethod {
 
   final String? type;
 }
+
+
+// enum Pages {
+//   notification((name : "", icon: Icons.notifications_active,index: 0)),
+//   home((name: "Home", icon: Icons.home,index: 1)),
+//   profile((name: "Profile", icon: Icons.account_circle_outlined,index: 2));
+//
+//   const Pages(this.element);
+//
+//   final ({required String name, required IconData icon,required int index}) element;
+// }
