@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/route_names.dart';
+import 'package:iti_coruses/screens/profile__screen.dart';
 import 'package:iti_coruses/services/extension.dart';
 
 import '../constants/color_manager.dart';
@@ -43,9 +44,20 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage("assets/images/img_7.png"),
+                  InkWell(
+                    onTap: (){
+                      context.navigator.push(MaterialPageRoute(
+                          builder: (context) => const ProfileScreen(
+                            assetName: "assets/images/img_7.png",
+                            subTitleName: "Online",
+                            titleName: "Abdalluh Essam",
+                            email: "abdallhesam100@gmail.com",
+                          )));
+                    },
+                    child: const CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage("assets/images/img_7.png"),
+                    ),
                   )
                 ],
               ),

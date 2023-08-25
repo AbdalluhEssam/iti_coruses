@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/screens/chat_screen.dart';
 import 'package:iti_coruses/screens/home_screen.dart';
+import 'package:iti_coruses/screens/newmassage_screen.dart';
 import 'package:iti_coruses/screens/onborading.dart';
 import 'package:iti_coruses/screens/singin_screen.dart';
 import 'package:iti_coruses/screens/singup_screen.dart';
@@ -42,6 +43,8 @@ class DayTaskApp extends StatelessWidget {
         RouteNames.signUpScreen: (context) => const SignUpScreen(title: "Sign UP"),
         RouteNames.taskDetailsScreen: (context) => const TaskDetailsScreen(),
         RouteNames.chatScreen: (context) => const ChatScreen(),
+        RouteNames.newMassageScreen: (context) => const NewMassageScreen(),
+        // RouteNames.chatDetailsScreen: (context) => const ChatDetailsScreen(assetName: '',),
       },
     );
   }

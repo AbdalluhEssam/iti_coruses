@@ -15,7 +15,6 @@ class _OnBoardingState extends State<OnBoarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorManager.textField,
       appBar: AppBar(
         toolbarHeight: 0,
       ),

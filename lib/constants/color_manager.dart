@@ -9,4 +9,5 @@ class ColorManager {
   static Color textFieldBackGround = const Color(0xff455a64);
   static Color textColor = const Color.fromRGBO(140, 170, 185, 1);
   static Color linearColor = const Color(0xff212832);
+  static Color backFormColor = const Color(0xff263238);
 }

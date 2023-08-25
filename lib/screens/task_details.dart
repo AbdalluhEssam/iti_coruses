@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
-import 'package:iti_coruses/services/extension.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
 
 final checkProvider = Provider<bool>((ref) {
@@ -29,13 +28,7 @@ class TaskDetailsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: ColorManager.textField,
       appBar: MyAppBar(
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: IconButton(
-                onPressed: () {
-                  context.navigator.pop();
-                },
-                icon: const Icon(IconBroken.Arrow___Left))),
+        leading: true,
         titleText: "Task Details",
         actions: [
           Padding(

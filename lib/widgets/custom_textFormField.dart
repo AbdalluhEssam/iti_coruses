@@ -6,12 +6,18 @@ class CustomTextFormField extends StatelessWidget {
   final String hintText;
   final String? text;
   final IconData? prefixIcon;
+  final Color? color;
+
+  final Color? colorBack;
+
   final IconData? suffixIcon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final Function()? suffixPressed;
-  final bool? isPassShow ;
-  final bool? readOnly ;
+  final Function()? prefixIconPressed;
+  final bool? isPassShow;
+
+  final bool? readOnly;
 
   const CustomTextFormField({
     Key? key,
@@ -22,7 +28,11 @@ class CustomTextFormField extends StatelessWidget {
     this.text,
     required this.controller,
     required this.validator,
-    this.suffixPressed, this.isPassShow, this.readOnly,
+    this.suffixPressed,
+    this.isPassShow,
+    this.readOnly,
+    this.color,
+    this.colorBack, this.prefixIconPressed,
   }) : super(key: key);
 
   @override
@@ -30,20 +40,20 @@ class CustomTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(text !=null)
+        if (text != null)
           Text(
-          text ?? "",
-          style: TextStyle(
-            fontSize: 15,
-            color: ColorManager.textColor,
+            text ?? "",
+            style: TextStyle(
+              fontSize: 15,
+              color: ColorManager.textColor,
+            ),
           ),
-        ) ,
-        if(text !=null)
-        const SizedBox(
-          height: 10,
-        ),
+        if (text != null)
+          const SizedBox(
+            height: 10,
+          ),
         Container(
-          color: ColorManager.textFieldBackGround,
+          color: colorBack ?? ColorManager.textFieldBackGround,
           child: TextFormField(
             keyboardType: keyboardType ?? TextInputType.text,
             validator: validator,
@@ -61,10 +71,24 @@ class CustomTextFormField extends StatelessWidget {
               contentPadding: const EdgeInsets.all(10),
               hintText: hintText,
               hintStyle: TextStyle(color: ColorManager.textColor),
-              prefixIcon: Icon(prefixIcon , color: Colors.white,),
+              prefixIcon: prefixIconPressed != null
+                  ? IconButton(
+                      icon: Icon(
+                        prefixIcon,
+                        color: color ?? Colors.white,
+                      ),
+                      onPressed: prefixIconPressed,
+                    )
+                  : Icon(
+                      prefixIcon,
+                      color: color ?? Colors.white,
+                    ),
               suffixIcon: suffixIcon != null
                   ? IconButton(
-                      icon: Icon(suffixIcon, color: Colors.white,),
+                      icon: Icon(
+                        suffixIcon,
+                        color: color ?? Colors.white,
+                      ),
                       onPressed: suffixPressed,
                     )
                   : null,

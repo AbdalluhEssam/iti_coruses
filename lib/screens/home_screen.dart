@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
+import 'package:iti_coruses/screens/calendar_screen.dart';
+import 'package:iti_coruses/screens/notifications_screen.dart';
+import 'package:iti_coruses/services/extension.dart';
 
+import '../constants/route_names.dart';
 import 'chat_screen.dart';
 import 'home_page.dart';
+import 'newmassage_screen.dart';
 
 final StateProvider<int> bottomBarIndexProvider = StateProvider<int>((_) {
   return 0;
@@ -18,9 +23,9 @@ class HomeScreen extends ConsumerWidget {
     List pages = [
       const HomePage(),
       const ChatScreen(),
-      const HomePage(),
-      const HomePage(),
-      const HomePage(),
+      const NewMassageScreen(),
+      const CalendarScreen(),
+      const NotificationsScreen(),
     ];
 
     return Scaffold(
@@ -54,7 +59,9 @@ class HomeScreen extends ConsumerWidget {
                     color: ColorManager.mustardYellow,
                     height: 55,
                     minWidth: 50,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.navigator.pushNamed(RouteNames.newMassageScreen);
+                    },
                     child: Icon(
                       IconBroken.Plus,
                       color: ColorManager.textField,

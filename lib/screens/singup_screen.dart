@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
 import 'package:iti_coruses/services/extension.dart';
+
 import '../constants/route_names.dart';
 import '../widgets/custom_textFormField.dart';
 
@@ -115,7 +116,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                   hintText: "Password",
                   keyboardType: TextInputType.emailAddress,
                   suffixIcon: isPassShow == true
-                      ? CupertinoIcons.eye_slash
+                      ? IconBroken.Hide
                       : IconBroken.Show,
                   prefixIcon: IconBroken.Lock,
                 ),

@@ -9,16 +9,17 @@ class ThemeManager {
   static ThemeManager shared = ThemeManager._();
 
   getAppTheme(BuildContext context) => ThemeData(
+      scaffoldBackgroundColor: ColorManager.textField,
       inputDecorationTheme: const InputDecorationTheme(),
       // iconTheme: const IconThemeData(color: Colors.black),
-      textTheme:  TextTheme(
-        bodyLarge:const TextStyle(
+      textTheme: TextTheme(
+        bodyLarge: const TextStyle(
           color: Colors.white,
           fontSize: 25,
           fontFamily: 'Inter',
           fontWeight: FontWeight.bold,
         ),
-        bodyMedium:const TextStyle(
+        bodyMedium: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),
@@ -29,7 +30,7 @@ class ThemeManager {
           fontFamily: 'PilatExtended',
           fontWeight: FontWeight.bold,
         ),
-        bodySmall:const TextStyle(
+        bodySmall: const TextStyle(
           color: Colors.white,
           fontSize: 22,
           fontFamily: 'PilatExtended',

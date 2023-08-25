@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/services/extension.dart';
 
+import '../constants/icon_broken.dart';
+
 class MyAppBar extends StatelessWidget implements PreferredSize {
   const MyAppBar({
     super.key,
@@ -13,14 +15,20 @@ class MyAppBar extends StatelessWidget implements PreferredSize {
   final String titleText;
   final List<Widget>? actions;
   final double? titleSpacing;
-  final Widget? leading;
+  final bool? leading;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(titleText),
       actions: actions ?? [],
-      leading: leading ?? null,
+      leading: leading == true? Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: IconButton(
+              onPressed: () {
+                context.navigator.pop();
+              },
+              icon: const Icon(IconBroken.Arrow___Left))) :null ,
       titleSpacing: titleSpacing ?? null,
       backgroundColor: context.theme.appBarTheme.backgroundColor,
     );
@@ -32,5 +40,5 @@ class MyAppBar extends StatelessWidget implements PreferredSize {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(60);
 }

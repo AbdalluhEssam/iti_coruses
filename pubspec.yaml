@@ -38,6 +38,7 @@ dependencies:
   intl: ^0.18.1
   flutter_riverpod:
   fl_chart: ^0.62.0
+  date_picker_timeline: ^1.2.5
 
 dev_dependencies:
   flutter_test:
