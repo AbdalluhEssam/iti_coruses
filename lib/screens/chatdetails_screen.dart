@@ -49,14 +49,14 @@ class ChatDetailsScreen extends StatelessWidget {
                     titleName,
                     style: Theme.of(context)
                         .textTheme
-                        .bodyLarge
+                        .bodyMedium
                         ?.copyWith(fontSize: 15),
                   ),
                   Text(
                     subTitleName,
                     style: Theme.of(context)
                         .textTheme
-                        .bodyLarge
+                        .bodyMedium
                         ?.copyWith(fontSize: 14, color: ColorManager.textColor),
                   ),
                 ],

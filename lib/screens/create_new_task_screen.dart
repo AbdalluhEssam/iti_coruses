@@ -80,7 +80,7 @@ class _CreateNewTaskScreenState extends State<CreateNewTaskScreen> {
                 },
               ),
               buildTitleWithPadding(context, "Add team members"),
-              buildCreateNewTask(2),
+              buildCreateNewTask(2,context),
               buildTitleWithPadding(context, "Time & Date"),
               Row(
                 children: [
@@ -252,7 +252,7 @@ class _CreateNewTaskScreenState extends State<CreateNewTaskScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: buildTitleWithPadding(context, "Add New"),
               ),
-              buildMaterialButton(context, () { }, "Create")
+              buildMaterialButton(context, () { }, "Create",20)
             ],
           ),
         ),

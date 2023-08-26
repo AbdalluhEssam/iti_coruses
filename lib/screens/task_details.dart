@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
+import 'package:iti_coruses/widgets/custom_button_widget.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
+import 'package:iti_coruses/widgets/title_widget.dart';
 
 final checkProvider = Provider<bool>((ref) {
   return true;
@@ -47,10 +49,8 @@ class TaskDetailsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  "Real Estate App Design",
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
+                buildTitle(context,  "Real Estate App Design",fontSize: 21),
+
                 Padding(
                   padding: const EdgeInsets.only(top: 27, bottom: 32),
                   child: Row(
@@ -61,13 +61,13 @@ class TaskDetailsScreen extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: 47,
+                            height: 47,
                             color: ColorManager.mustardYellow,
-                            child: const Icon(IconBroken.Calendar, size: 35),
+                            child: const Icon(IconBroken.Calendar, size: 24),
                           ),
                           const SizedBox(
-                            width: 15,
+                            width: 14,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,21 +96,23 @@ class TaskDetailsScreen extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(width: 50,),
+                      const SizedBox(width: 10,),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: 47,
+                            height: 47,
                             color: ColorManager.mustardYellow,
-                            child: const Icon(IconBroken.User, size: 35),
+                            child: const Icon(IconBroken.User, size: 24),
                           ),
                           const SizedBox(
-                            width: 15,
+                            width: 14,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
                                 "Project Team",
@@ -121,9 +123,7 @@ class TaskDetailsScreen extends ConsumerWidget {
                                         color: ColorManager.textColor,
                                         fontSize: 11),
                               ),
-                              const SizedBox(
-                                height: 5,
-                              ),
+
                               SizedBox(
                                 height: 30,
                                 width: 46,
@@ -165,7 +165,7 @@ class TaskDetailsScreen extends ConsumerWidget {
                   "Project Details",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyLarge!
+                      .bodyMedium!
                       .copyWith(fontWeight: FontWeight.normal, fontSize: 20),
                 ),
                 Padding(
@@ -185,7 +185,7 @@ class TaskDetailsScreen extends ConsumerWidget {
                     children: [
                       Text(
                         "Project Progress",
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                             fontWeight: FontWeight.normal, fontSize: 20),
                       ),
                       Padding(
@@ -199,6 +199,7 @@ class TaskDetailsScreen extends ConsumerWidget {
                               child: CircularProgressIndicator(
                                 value: 0.6,
                                 color: ColorManager.mustardYellow,
+                                strokeWidth: 2,
                                 backgroundColor: ColorManager.textFieldBackGround,
                               ),
                             ),
@@ -216,7 +217,7 @@ class TaskDetailsScreen extends ConsumerWidget {
                   "All Tasks",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyLarge!
+                      .bodyMedium!
                       .copyWith(fontWeight: FontWeight.normal, fontSize: 20),
                 ),
                 const SizedBox(
@@ -262,19 +263,7 @@ class TaskDetailsScreen extends ConsumerWidget {
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
         color: ColorManager.textField,
-        child: MaterialButton(
-          height: 60,
-          color: ColorManager.mustardYellow,
-          onPressed: () {},
-          child: const Text(
-            "Add Task",
-            style: TextStyle(
-              fontSize: 20,
-              fontFamily: "Inter",
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+        child: buildMaterialButton(context, () { }, "Add Task",20),
       ),
     );
   }

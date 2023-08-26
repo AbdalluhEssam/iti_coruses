@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
@@ -29,18 +30,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(titleText: "Schedule", leading: true, actions: [
-        IconButton(onPressed: () {
-          context.navigator.pushNamed(RouteNames.createNewTaskScreen);
-
-        }, icon: const Icon(IconBroken.Plus))
+        IconButton(
+            onPressed: () {
+              context.navigator.pushNamed(RouteNames.createNewTaskScreen);
+            },
+            icon: const Icon(IconBroken.Plus))
       ]),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.only(top: 0,bottom: 0,right: 20,left: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildTitleWithPadding(context, DateFormat.MMMM().format(DateTime.now()).toString(),26),
-
+            buildTitleWithPadding(context,
+                DateFormat.MMMM().format(DateTime.now()).toString(), 26),
             SizedBox(
               height: 70,
               child: ListView.separated(
@@ -99,7 +101,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ),
             ),
-            buildTitleWithPadding(context, "Today’s Tasks",26),
+            buildTitleWithPadding(context, "Today’s Tasks", 26),
             Expanded(
                 child: ListView.separated(
                     itemBuilder: (context, index) => InkWell(
@@ -127,34 +129,37 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                     ),
                                   ),
                                 ),
-                                Column(
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width * 0.35,
+                                  child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "User Interviews",
+                                      index == 0? "User Interviews" : Faker().person.name(),
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyLarge
+                                          .bodyMedium
                                           ?.copyWith(
-                                              fontSize: 18,
-                                              color:
-                                                  isSelectedListTitle == index
-                                                      ? Colors.black
-                                                      : Colors.white),
+                                          fontSize: 18,
+                                          color:
+                                          isSelectedListTitle == index
+                                              ? Colors.black
+                                              : Colors.white),
                                     ),
                                     Text(
                                       "16:00 - 18:30",
                                       style: TextStyle(
                                           color: isSelectedListTitle == index
                                               ? Colors.black
-                                              : Colors.white),
+                                              : Colors.white,
+                                          fontSize: 12),
                                     ),
                                   ],
-                                ),
-                                 SizedBox(
-                                  width: isSelectedListTitle == index
-                                      ?  140:80,
+                                ),),
+                                SizedBox(
+                                  width:
+                                      isSelectedListTitle == index ? 140 : 80,
                                 ),
                                 SizedBox(
                                   height: 30,

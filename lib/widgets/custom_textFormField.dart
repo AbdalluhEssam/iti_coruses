@@ -51,7 +51,7 @@ class CustomTextFormField extends StatelessWidget {
             text ?? "",
             style: TextStyle(
               fontSize: 15,
-              color: colorText ?? Colors.white,
+              color: colorText ??  ColorManager.textColor,
             ),
           ),
         if (text != null)

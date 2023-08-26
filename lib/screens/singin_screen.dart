@@ -50,11 +50,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 Container(
                   alignment: Alignment.center,
-                  height: 100,
+                  margin: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).size.width * 0.13),
+                  height: MediaQuery.of(context).size.height * 0.115,
                   child: Image.asset("assets/images/img.png"),
-                ),
-                const SizedBox(
-                  height: 50,
                 ),
                 const Text(
                   "Welcome Back!",
@@ -124,7 +123,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   if (formState.currentState?.validate() == true) {
                     context.navigator.pushNamed(RouteNames.home);
                   }
-                }, "Log In"),
+                }, "Log In" ,20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(
@@ -156,15 +155,15 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     onPressed: () {},
                     label: Text("Google",
-                        style: Theme.of(context).textTheme.bodyLarge),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18)),
                     icon: Image.asset(
                       "assets/images/img_5.png",
-                      width: 30,
+                      width: 28,
                     )),
                 Container(
                   alignment: Alignment.center,
                   margin: const EdgeInsets.symmetric(
-                    vertical: 15,
+                    vertical: 25,
                   ),
                   child: InkWell(
                       onTap: () {

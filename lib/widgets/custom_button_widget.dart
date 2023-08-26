@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 
-Widget buildMaterialButton(context, void Function()? onPressed, String text , [double? height,double? width]) =>
+Widget buildMaterialButton(context, void Function()? onPressed, String text , [double? fontSize ,double? height,double? width]) =>
     SizedBox(
       width:width?? double.infinity,
       child: MaterialButton(
@@ -11,7 +11,7 @@ Widget buildMaterialButton(context, void Function()? onPressed, String text , [d
         child: Text(text,
             style: Theme.of(context)
                 .textTheme
-                .bodyLarge!
-                .copyWith(color: Colors.black)),
+                .bodyMedium!
+                .copyWith(color: Colors.black , fontSize: fontSize ?? null)),
       ),
     );

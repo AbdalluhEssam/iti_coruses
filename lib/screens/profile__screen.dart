@@ -46,29 +46,29 @@ class ProfileScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 75,
+                      radius: 65,
                       backgroundColor: ColorManager.mustardYellow,
                       child: CircleAvatar(
-                        radius: 72,
+                        radius: 62,
                         backgroundColor: ColorManager.textField,
                         child: CircleAvatar(
-                          radius: 68,
+                          radius: 58,
                           backgroundImage: AssetImage(assetName),
                         ),
                       ),
                     ),
                     Positioned(
-                      right: 5,
-                      bottom: 5,
+                      right: 2,
+                      bottom: 2,
                       child: CircleAvatar(
-                        radius: 22,
+                        radius: 19,
                         backgroundColor: ColorManager.textField,
                         child: IconButton(
                             onPressed: () {},
                             icon: const Icon(
                               IconBroken.Plus,
                               color: Colors.white,
-                              size: 27,
+                              size: 22,
                             )),
                       ),
                     ),
@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 45,
+                height: 42,
               ),
               CustomTextFormField(
                 prefixIcon: IconBroken.Add_User,
@@ -177,10 +177,11 @@ class ProfileScreen extends StatelessWidget {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 45,
+               SizedBox(
+                height: MediaQuery.of(context).size.width * 0.112,
               ),
               SizedBox(
+                height: 55,
                 width: double.infinity,
                 child: ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
@@ -191,15 +192,15 @@ class ProfileScreen extends StatelessWidget {
                     icon: Icon(
                       IconBroken.Logout,
                       color: ColorManager.textField,
-                      size: 30,
+                      size: 25,
                       shadows: const [Shadow(color: Colors.black, blurRadius: 2)],
                     ),
                     label: Text(
                       "Logout",
                       style: Theme.of(context)
                           .textTheme
-                          .bodyLarge
-                          ?.copyWith(color: ColorManager.textField, fontSize: 20),
+                          .bodyMedium
+                          ?.copyWith(color: ColorManager.textField, fontSize: 18),
                     )),
               )
             ],

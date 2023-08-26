@@ -85,14 +85,14 @@ class _ChatScreenState extends State<ChatScreen>
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  buildChatComponent(20, onTap: true),
+                  buildChatComponent(5, onTap: true),
                   const SizedBox(
                     height: 20,
                   ),
                   Container(
                     alignment: Alignment.centerRight,
                     child: buildMaterialButton(
-                        context, () {}, "Start chat", 57, 175),
+                        context, () {}, "Start chat", 16,57, 175),
                   )
                 ],
               ),

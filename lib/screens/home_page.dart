@@ -15,7 +15,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
-
     return SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -28,7 +27,7 @@ class HomePage extends StatelessWidget {
               ),
               buildNameAndImage(context, assets: Res.circleAvatar,onTap: () {
                 context.navigator.push(MaterialPageRoute(
-                    builder: (context) => ProfileScreen(
+                    builder: (context) => const ProfileScreen(
                       assetName: "assets/images/img_7.png",
                       subTitleName: "Online",
                       titleName: "Abdalluh Essam",
@@ -83,7 +82,7 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     buildTitleWithRow(context, title: "Ongoing Projects", subTitle: "See all"),
-                    buildOngoingBox(itemCount: 30)
+                    buildOngoingBox(itemCount: 10)
                   ],
                 ),
               ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-Widget buildTitle(context, title) => Padding(
+Widget buildTitle(context, title,{double? fontSize}) => Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 20),
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: fontSize??20),
       ),
     );
 
@@ -12,7 +12,7 @@ Widget buildTitleWithPadding(context, title,[double? vertical]) => Padding(
       padding:  EdgeInsets.symmetric(vertical:vertical?? 20),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 20),
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 20),
       ),
     );
 
@@ -20,7 +20,7 @@ Widget buildTitleWithPaddingBodyLarge(context, title,[double? vertical]) => Padd
       padding:  EdgeInsets.symmetric(vertical:vertical?? 20),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.bodyLarge,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
 

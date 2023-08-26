@@ -11,3 +11,4 @@ class ColorManager {
   static Color linearColor = const Color(0xff212832);
   static Color backFormColor = const Color(0xff263238);
 }
+

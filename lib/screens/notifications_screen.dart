@@ -20,17 +20,17 @@ class NotificationsScreen extends StatelessWidget {
         child: ListView(
           physics: const BouncingScrollPhysics(),
           children: [
-            buildTitle(context, "New"),
-            buildChatComponent(4,
+            buildTitleWithPadding(context, "New",5),
+            buildNotificationComponent(4,
                 color: ColorManager.mustardYellow,
                 time: "31 min",
                 text: "Mobile App Design Project",
                 title: "left a comment in task"),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
-            buildTitle(context, "Earlier"),
-            buildChatComponent(3,
+            buildTitleWithPadding(context, "Earlier",5),
+            buildNotificationComponent(3,
                 color: ColorManager.mustardYellow,
                 time: "31 min",
                 text: "Mobile App Design Project",

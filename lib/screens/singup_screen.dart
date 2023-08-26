@@ -46,21 +46,18 @@ class _SignInScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 37.5,
-                ),
+
                 Container(
+                  margin: const EdgeInsets.only(bottom: 45,top: 35),
                   alignment: Alignment.center,
-                  height: 100,
+                  height: MediaQuery.of(context).size.width * 0.24,
                   child: Image.asset("assets/images/img.png"),
                 ),
-                const SizedBox(
-                  height: 50,
-                ),
+
                 const Text(
                   "Create your account",
                   style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
                 ),
@@ -167,7 +164,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                   if (formState.currentState?.validate() == true) {
                     context.navigator.pushNamed(RouteNames.signInScreen);
                   }
-                }, "Sign Up"),
+                }, "Sign Up",20),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
@@ -199,10 +196,12 @@ class _SignInScreenState extends State<SignUpScreen> {
                     ),
                     onPressed: () {},
                     label:  Text("Google",
-                        style: Theme.of(context).textTheme.bodyLarge),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          fontSize: 18
+                        )),
                     icon: Image.asset(
                       "assets/images/img_5.png",
-                      width: 30,
+                      width: 28,
                     )),
                 Container(
                   alignment: Alignment.center,
@@ -210,14 +209,16 @@ class _SignInScreenState extends State<SignUpScreen> {
                     vertical: 15,
                   ),
                   child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        context.navigator.pushNamed(RouteNames.signInScreen);
+                      },
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
-                        Text("Don’t have an account?",
+                        Text("Already have an account?",
                             style: TextStyle(
                               color: ColorManager.textColor,
                               fontSize: 16,
                             )),
-                        Text(" Sign Up",
+                        Text(" Log In",
                             style: TextStyle(
                               color: ColorManager.mustardYellow,
                               fontSize: 17,

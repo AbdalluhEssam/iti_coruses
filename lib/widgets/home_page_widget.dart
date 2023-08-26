@@ -52,9 +52,10 @@ Widget buildTasksBox() => SizedBox(
             context.navigator.pushNamed(RouteNames.taskDetailsScreen);
           },
           child: Container(
+
             padding: const EdgeInsets.all(10),
-            width: 185,
-            height: 175,
+            width:((MediaQuery.of(context).size.width * 0.455).toInt()).toDouble(),
+            height:((MediaQuery.of(context).size.width * 0.42).toInt()).toDouble(),
             decoration: BoxDecoration(
                 color: index == 0
                     ? ColorManager.mustardYellow
@@ -63,36 +64,33 @@ Widget buildTasksBox() => SizedBox(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    "Real Estate Website Design",
-                    style: index == 0
-                        ? Theme.of(context).textTheme.labelLarge
-                        : Theme.of(context)
-                            .textTheme
-                            .labelLarge!
-                            .copyWith(color: Colors.white),
-                  ),
+                Text(
+                  "Real Estate Website Design",
+                  style: index == 0
+                      ? Theme.of(context).textTheme.labelLarge
+                      : Theme.of(context)
+                          .textTheme
+                          .labelLarge!
+                          .copyWith(color: Colors.white),
                 ),
-                Flexible(
+                Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "Team members",
                         style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 11,
                             fontFamily: "Inter",
                             color: index == 0 ? Colors.black : Colors.white),
                       ),
-                      Flexible(
+                      Expanded(
                         child: buildStackImage(length: 5, left: false),
                       ),
                     ],
                   ),
                 ),
-                Flexible(
+                Expanded(
                     child: Column(
                   children: [
                     Expanded(
@@ -150,7 +148,7 @@ Widget buildOngoingBox({required int itemCount}) => ListView.separated(
       DateTime dateNow = DateTime.now().add(Duration(days: index));
       date = DateTime(dateNow.year, dateNow.month, dateNow.day);
       return Container(
-        width: 390,
+        width: double.infinity,
         height: 130,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(color: ColorManager.textFieldBackGround),
@@ -159,7 +157,8 @@ Widget buildOngoingBox({required int itemCount}) => ListView.separated(
           children: [
             Text(
               "Mobile App Wireframe",
-              style: Theme.of(context).textTheme.bodySmall,
+              style:
+                  Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 20),
             ),
             const SizedBox(
               height: 8,
