@@ -1,26 +1,17 @@
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
-import 'package:iti_coruses/services/extension.dart';
+import 'package:iti_coruses/widgets/chat_commpnent.dart';
+import 'package:iti_coruses/widgets/default_app_bar.dart';
 
-
-class NewMassageScreen extends StatelessWidget  {
+class NewMassageScreen extends StatelessWidget {
   const NewMassageScreen({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: IconButton(
-                onPressed: () {
-                  context.navigator.pop();
-                },
-                icon: const Icon(IconBroken.Arrow___Left))),
-        title: const Text("New Message"),
+      appBar: MyAppBar(
+        titleText: "New Message",
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -28,6 +19,7 @@ class NewMassageScreen extends StatelessWidget  {
                 onPressed: () {}, icon: const Icon(IconBroken.Search)),
           )
         ],
+        leading: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -35,38 +27,22 @@ class NewMassageScreen extends StatelessWidget  {
           physics: const BouncingScrollPhysics(),
           children: [
             ListTile(
-              contentPadding: const EdgeInsets.symmetric( vertical: 10),
+              onTap: () {},
+              contentPadding: const EdgeInsets.symmetric(vertical: 10),
               iconColor: Colors.black,
-              leading:  CircleAvatar(
+              leading: CircleAvatar(
                 radius: 30,
                 backgroundColor: ColorManager.mustardYellow,
-                child: const Icon(IconBroken.User,color: Colors.black,size: 35,),
+                child: const Icon(
+                  IconBroken.User,
+                  color: Colors.black,
+                  size: 35,
+                ),
               ),
               title: const Text("Create a group",
-                  style: TextStyle(
-                      color: Colors.white, fontSize: 18)),
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
             ),
-            ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemBuilder: (context, index) {
-                  String name =Faker().person.name();
-                  return ListTile(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                      iconColor: Colors.black,
-                      leading: const CircleAvatar(
-                        radius: 30,
-                        backgroundImage: AssetImage("assets/images/img_7.png"),
-                      ),
-                      title:  Text(name,
-                          style: const TextStyle(color: Colors.white, fontSize: 18,),maxLines: 1),
-                      trailing: Text(
-                        name.characters.first,
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 16),
-                      ),
-                    );
-                },
-                itemCount: 50),
+            buildChatNewMassageComponent(itemCount: 50,onTap: () {},),
           ],
         ),
       ),

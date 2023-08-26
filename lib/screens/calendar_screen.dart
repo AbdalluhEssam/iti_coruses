@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
+import 'package:iti_coruses/constants/route_names.dart';
+import 'package:iti_coruses/services/extension.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
+import 'package:iti_coruses/widgets/title_widget.dart';
 
 class CalendarScreen extends StatefulWidget {
   const CalendarScreen({super.key});
@@ -26,21 +29,18 @@ class _CalendarScreenState extends State<CalendarScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(titleText: "Schedule", leading: true, actions: [
-        IconButton(onPressed: () {}, icon: const Icon(IconBroken.Plus))
+        IconButton(onPressed: () {
+          context.navigator.pushNamed(RouteNames.createNewTaskScreen);
+
+        }, icon: const Icon(IconBroken.Plus))
       ]),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              DateFormat.MMMM().format(DateTime.now()).toString(),
-              style:
-                  Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 20),
-            ),
-            const SizedBox(
-              height: 26,
-            ),
+            buildTitleWithPadding(context, DateFormat.MMMM().format(DateTime.now()).toString(),26),
+
             SizedBox(
               height: 70,
               child: ListView.separated(
@@ -99,17 +99,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 26,
-            ),
-            Text(
-              "Today’s Tasks",
-              style:
-                  Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 20),
-            ),
-            const SizedBox(
-              height: 26,
-            ),
+            buildTitleWithPadding(context, "Today’s Tasks",26),
             Expanded(
                 child: ListView.separated(
                     itemBuilder: (context, index) => InkWell(

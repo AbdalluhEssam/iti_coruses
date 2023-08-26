@@ -5,6 +5,7 @@ import 'package:iti_coruses/constants/icon_broken.dart';
 import 'package:iti_coruses/services/extension.dart';
 
 import '../constants/route_names.dart';
+import '../widgets/custom_button_widget.dart';
 import '../widgets/custom_textFormField.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -161,18 +162,13 @@ class _SignInScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-                MaterialButton(
-                  onPressed: () {
-                    if (formState.currentState?.validate() == true) {
-                      context.navigator.pushNamed(RouteNames.signInScreen);
-                    }
-                  },
-                  color: const Color(0xfffed36a),
-                  height: 65,
-                  minWidth: 400,
-                  child:  Text("Log In",
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black)),
-                ),
+
+                buildMaterialButton(context, () {
+                  if (formState.currentState?.validate() == true) {
+                    context.navigator.pushNamed(RouteNames.signInScreen);
+                  }
+                }, "Sign Up"),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(

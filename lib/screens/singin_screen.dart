@@ -5,6 +5,7 @@ import 'package:iti_coruses/services/extension.dart';
 
 import '../constants/icon_broken.dart';
 import '../constants/route_names.dart';
+import '../widgets/custom_button_widget.dart';
 import '../widgets/custom_textFormField.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -98,9 +99,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   text: "Password",
                   hintText: "Password",
                   keyboardType: TextInputType.emailAddress,
-                  suffixIcon: isPassShow == true
-                      ? IconBroken.Hide
-                      : IconBroken.Show,
+                  suffixIcon:
+                      isPassShow == true ? IconBroken.Hide : IconBroken.Show,
                   prefixIcon: IconBroken.Lock,
                 ),
                 Container(
@@ -120,18 +120,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                MaterialButton(
-                  onPressed: () {
-                    if (formState.currentState?.validate() == true) {
-                      context.navigator.pushNamed(RouteNames.home);
-                    }
-                  },
-                  color: const Color(0xfffed36a),
-                  height: 65,
-                  minWidth: 400,
-                  child: Text("Log In",
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black)),
-                ),
+                buildMaterialButton(context, () {
+                  if (formState.currentState?.validate() == true) {
+                    context.navigator.pushNamed(RouteNames.home);
+                  }
+                }, "Log In"),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(

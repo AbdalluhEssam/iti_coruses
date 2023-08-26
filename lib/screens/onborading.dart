@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/services/extension.dart';
+import 'package:iti_coruses/widgets/custom_button_widget.dart';
 
 import '../constants/route_names.dart';
 
@@ -61,19 +62,9 @@ class _OnBoardingState extends State<OnBoarding> {
                   const SizedBox(
                     height: 20,
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      context.navigator.pushNamed(RouteNames.signInScreen);
-                    },
-                    color: const Color(0xfffed36a),
-                    height: 65,
-                    minWidth: 400,
-                    child: const Text("Let’s Start",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        )),
-                  )
+                  buildMaterialButton(context, () {
+                    context.navigator.pushNamed(RouteNames.signInScreen);
+                  }, "Let’s Start"),
                 ],
               )
             ],

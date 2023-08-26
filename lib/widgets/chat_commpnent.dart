@@ -1,11 +1,12 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
+import 'package:iti_coruses/res.dart';
 import 'package:iti_coruses/services/extension.dart';
 
 import '../screens/chatdetails_screen.dart';
 
-Widget buildChatComponent(int itemCount,{Color? color, String? text, String? time, String? title ,bool? onTap}) =>
+Widget buildChatGroupComponent(int itemCount,{Color? color, String? text, String? time, String? title ,bool? onTap}) =>
     ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -14,7 +15,7 @@ Widget buildChatComponent(int itemCount,{Color? color, String? text, String? tim
                 if(onTap == true) {
                   context.navigator.push(MaterialPageRoute(
                     builder: (context) => const ChatDetailsScreen(
-                          assetName: "assets/images/abd.jpeg",
+                          assetName: Res.abdallah,
                           subTitleName: "Online",
                           titleName: "Android Developer",
                         )));
@@ -24,7 +25,7 @@ Widget buildChatComponent(int itemCount,{Color? color, String? text, String? tim
               iconColor: Colors.black,
               leading: const CircleAvatar(
                 radius: 30,
-                backgroundImage: AssetImage("assets/images/abd.jpeg"),
+                backgroundImage: AssetImage(Res.abdallah),
               ),
               title: RichText(
                   text: TextSpan(
@@ -48,4 +49,81 @@ Widget buildChatComponent(int itemCount,{Color? color, String? text, String? tim
                     color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
+        itemCount: itemCount);
+Widget buildChatComponent(int itemCount,{Color? color, String? text, String? time, String? title ,bool? onTap}) =>
+    ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, index) => ListTile(
+          onTap: () {
+            context.navigator.push(MaterialPageRoute(
+                builder: (context) => const ChatDetailsScreen(
+                  assetName: Res.circleAvatar,
+                  subTitleName: "Online",
+                  titleName: "Abdalluh Essam",
+                )));
+          },
+          contentPadding: const EdgeInsets.symmetric(
+              horizontal: 0, vertical: 10),
+          iconColor: Colors.black,
+          leading:  const CircleAvatar(
+            radius: 30,
+            backgroundImage:
+            AssetImage(Res.circleAvatar),
+          ),
+          title: const Text("Olivia Anna",
+              style: TextStyle(
+                  color: Colors.white, fontSize: 18)),
+          subtitle: Text(
+            "Hi, please check the last task, that I....",
+            style: Theme.of(context)
+                .textTheme
+                .labelMedium!
+                .copyWith(
+                color: const Color.fromRGBO(
+                    184, 184, 184, 1)),
+          ),
+          dense: true,
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "31 min",
+                style: Theme.of(context).textTheme.labelSmall,
+              ),
+              if (index < 2)
+                const SizedBox(
+                  height: 5,
+                ),
+              if (index < 2)
+                CircleAvatar(
+                  backgroundColor: ColorManager.mustardYellow,
+                  radius: 3.5,
+                )
+            ],
+          ),
+        ),
+        itemCount: 5);
+Widget buildChatNewMassageComponent({required int itemCount,Color? color, String? text, String? time, String? title ,Function()? onTap}) =>
+    ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          String name = Faker().person.name();
+          return ListTile(
+            onTap: onTap,
+            contentPadding: const EdgeInsets.symmetric(vertical: 15),
+            iconColor: Colors.black,
+            leading: const CircleAvatar(
+              radius: 30,
+              backgroundImage: AssetImage(Res.circleAvatar),
+            ),
+            title:  Text(name,
+                style: const TextStyle(color: Colors.white, fontSize: 18,),maxLines: 1),
+            trailing: Text(
+              name.characters.first,
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 16),
+            ),
+          );
+        },
         itemCount: itemCount);

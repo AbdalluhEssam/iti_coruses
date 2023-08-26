@@ -86,40 +86,44 @@ Widget buildMyMessage(context, {String? text, String? image}) => Align(
                 fit: BoxFit.cover,
               )),
     );
-Widget buildBottomNavBar(TextEditingController messageController) => Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Expanded(
-        flex: 4,
-        child: CustomTextFormField(
-          colorBack: ColorManager.backFormColor,
-          suffixIcon: IconBroken.Send,
-          prefixIcon: IconBroken.Category,
-          prefixIconPressed: () {},
-          suffixPressed: () {},
-          hintText: "Type a message",
-          color: ColorManager.mustardYellow,
-          controller: messageController,
-          validator: (val) {
-            if (val?.isEmpty == true) {
-              return "";
-            }
-            return null;
-          },
-        )),
-    const SizedBox(
-      width: 8,
-    ),
-    Container(
-      width: 57,
-      color: ColorManager.backFormColor,
-      child: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            IconBroken.Voice_2,
-            color: ColorManager.mustardYellow,
-          )),
-    ),
-  ],
-);
 
+Widget buildBottomNavBar(TextEditingController messageController) => Container(
+      padding: const EdgeInsets.only(top: 10),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+              flex: 4,
+              child: CustomTextFormField(
+                colorBack: ColorManager.backFormColor,
+                suffixIcon: IconBroken.Send,
+                prefixIcon: IconBroken.Category,
+                prefixIconPressed: () {},
+                suffixPressed: () {},
+                hintText: "Type a message",
+                color: ColorManager.mustardYellow,
+                controller: messageController,
+                validator: (val) {
+                  if (val?.isEmpty == true) {
+                    return "";
+                  }
+
+                  return null;
+                },
+              )),
+          const SizedBox(
+            width: 8,
+          ),
+          Container(
+            width: 57,
+            color: ColorManager.backFormColor,
+            child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  IconBroken.Voice_2,
+                  color: ColorManager.mustardYellow,
+                )),
+          ),
+        ],
+      ),
+    );

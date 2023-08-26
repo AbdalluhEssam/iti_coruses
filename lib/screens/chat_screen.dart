@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
 import 'package:iti_coruses/services/extension.dart';
+import 'package:iti_coruses/widgets/tab_bar_widget.dart';
 
 import '../widgets/chat_commpnent.dart';
-import 'chatdetails_screen.dart';
+import '../widgets/custom_button_widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -16,26 +16,26 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
+
   @override
   void initState() {
-    tabController = TabController(length: 2, vsync: this, initialIndex: 0 );
+    tabController = TabController(length: 2, vsync: this, initialIndex: 0);
     tabController?.addListener(() {
       setState(() {
         if (tabController?.indexIsChanging == true) {
           setState(() {});
         }
-
-
       });
     });
     super.initState();
-
   }
+
   @override
   void dispose() {
     tabController?.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,47 +67,13 @@ class _ChatScreenState extends State<ChatScreen>
             },
             tabs: [
               Tab(
-                height: 100,
-                child: Container(
-                  width: 175,
-                  padding:const EdgeInsets.symmetric(vertical: 15),
-                  decoration: BoxDecoration(
-                    color: tabController?.index == 0
-                        ? ColorManager.mustardYellow
-                        : ColorManager.containerField,
-                  ),
-                  child: Text(
-                    "Chat",
-                    textAlign: TextAlign.center,
-
-                    style: TextStyle(
-                        color: tabController?.index == 0
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 15),
-                  ),
-                ),
-              ),
+                  height: 100,
+                  child: buildTabBar(
+                      text: "Chat", tabController: tabController, index: 0)),
               Tab(
-                height: 100,
-                child: Container(
-                  width: 175,
-                  padding:const EdgeInsets.symmetric( vertical: 15),
-                  color: tabController?.index == 1
-                      ? ColorManager.mustardYellow
-                      : ColorManager.containerField,
-                  child: Text(
-                    "Groups",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: tabController?.index == 1
-                          ? Colors.black
-                          : Colors.white,
-                    ),
-                  ),
-                ),
-              )
+                  height: 100,
+                  child: buildTabBar(
+                      text: "Groups", tabController: tabController, index: 1))
             ]),
       ),
       body: TabBarView(
@@ -119,76 +85,14 @@ class _ChatScreenState extends State<ChatScreen>
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => ListTile(
-                            onTap: () {
-                              context.navigator.push(MaterialPageRoute(
-                                  builder: (context) => const ChatDetailsScreen(
-                                        assetName: "assets/images/img_7.png",
-                                        subTitleName: "Online",
-                                        titleName: "Abdalluh Essam",
-                                      )));
-                            },
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 0, vertical: 10),
-                            iconColor: Colors.black,
-                            leading: const CircleAvatar(
-                              radius: 30,
-                              backgroundImage:
-                                  AssetImage("assets/images/img_7.png"),
-                            ),
-                            title: const Text("Olivia Anna",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 18)),
-                            subtitle: Text(
-                              "Hi, please check the last task, that I....",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(
-                                      color: const Color.fromRGBO(
-                                          184, 184, 184, 1)),
-                            ),
-                            dense: true,
-                            trailing: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "31 min",
-                                  style: Theme.of(context).textTheme.labelSmall,
-                                ),
-                                if (index < 2)
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                if (index < 2)
-                                  CircleAvatar(
-                                    backgroundColor: ColorManager.mustardYellow,
-                                    radius: 3.5,
-                                  )
-                              ],
-                            ),
-                          ),
-                      itemCount: 5),
+                  buildChatComponent(20, onTap: true),
                   const SizedBox(
                     height: 20,
                   ),
                   Container(
                     alignment: Alignment.centerRight,
-                    child: MaterialButton(
-                      color: ColorManager.mustardYellow,
-                      minWidth: 175,
-                      height: 57,
-                      onPressed: () {},
-                      child: Text(
-                        "Start chat",
-                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                              fontFamily: "Inter",
-                            ),
-                      ),
-                    ),
+                    child: buildMaterialButton(
+                        context, () {}, "Start chat", 57, 175),
                   )
                 ],
               ),
@@ -198,7 +102,7 @@ class _ChatScreenState extends State<ChatScreen>
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                  buildChatComponent(20,onTap: true),
+                  buildChatGroupComponent(20, onTap: true),
                 ],
               ),
             )

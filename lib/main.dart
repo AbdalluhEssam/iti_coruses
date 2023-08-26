@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/screens/chat_screen.dart';
+import 'package:iti_coruses/screens/create_new_task_screen.dart';
 import 'package:iti_coruses/screens/home_screen.dart';
 import 'package:iti_coruses/screens/newmassage_screen.dart';
 import 'package:iti_coruses/screens/onborading.dart';
@@ -34,7 +35,7 @@ class DayTaskApp extends StatelessWidget {
       //               );
       //             },
       //           ));
-      initialRoute: RouteNames.home,
+      initialRoute: RouteNames.onBoarding,
       routes: {
         RouteNames.onBoarding: (context) => const OnBoarding(),
         RouteNames.testScreen: (context) => const TestScreen(title: "Test Screen"),
@@ -44,6 +45,7 @@ class DayTaskApp extends StatelessWidget {
         RouteNames.taskDetailsScreen: (context) => const TaskDetailsScreen(),
         RouteNames.chatScreen: (context) => const ChatScreen(),
         RouteNames.newMassageScreen: (context) => const NewMassageScreen(),
+        RouteNames.createNewTaskScreen: (context) => const CreateNewTaskScreen(),
         // RouteNames.chatDetailsScreen: (context) => const ChatDetailsScreen(assetName: '',),
       },
     );

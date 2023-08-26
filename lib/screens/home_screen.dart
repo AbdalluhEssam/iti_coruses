@@ -27,6 +27,27 @@ class HomeScreen extends ConsumerWidget {
       const CalendarScreen(),
       const NotificationsScreen(),
     ];
+    List<BottomNavigationBarItem> itemBottomNavBat = [
+      const BottomNavigationBarItem(icon: Icon(IconBroken.Home), label: "Home"),
+      const BottomNavigationBarItem( icon: Icon(IconBroken.Chat), label: "Chat"),
+      BottomNavigationBarItem( icon: Transform.translate(
+        offset: const Offset(0, 5),
+        child: MaterialButton(
+            color: ColorManager.mustardYellow,
+            height: 55,
+            minWidth: 50,
+            onPressed: () {
+              context.navigator.pushNamed(RouteNames.newMassageScreen);
+            },
+            child: Icon(
+              IconBroken.Plus,
+              color: ColorManager.textField,
+              size: 30,
+            )),
+      ),label: ""),
+      const BottomNavigationBarItem(icon: Icon(IconBroken.Calendar), label: "Calendar"),
+      const BottomNavigationBarItem(icon: Icon(IconBroken.Notification), label: "Notification"),
+    ];
 
     return Scaffold(
       appBar: AppBar(toolbarHeight: 0,),
@@ -39,41 +60,14 @@ class HomeScreen extends ConsumerWidget {
         selectedIconTheme: IconThemeData(color: ColorManager.mustardYellow),
         selectedLabelStyle: TextStyle(color: ColorManager.mustardYellow),
         onTap: (value) {
-          ref.read(bottomBarIndexProvider.notifier)
-              .update((int state) => value);
+          ref.read(bottomBarIndexProvider.notifier).update((int state) => value);
         },
         backgroundColor: ColorManager.textField,
         selectedItemColor: ColorManager.mustardYellow,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         currentIndex: ref.watch(bottomBarIndexProvider.notifier).state,
-        items: [
-          const BottomNavigationBarItem(
-              icon: Icon(IconBroken.Home), label: "Home"),
-          const BottomNavigationBarItem(
-              icon: Icon(IconBroken.Chat), label: "Chat"),
-          BottomNavigationBarItem(
-              icon: Transform.translate(
-                offset: const Offset(0, 5),
-                child: MaterialButton(
-                    color: ColorManager.mustardYellow,
-                    height: 55,
-                    minWidth: 50,
-                    onPressed: () {
-                      context.navigator.pushNamed(RouteNames.newMassageScreen);
-                    },
-                    child: Icon(
-                      IconBroken.Plus,
-                      color: ColorManager.textField,
-                      size: 30,
-                    )),
-              ),
-              label: ""),
-          const BottomNavigationBarItem(
-              icon: Icon(IconBroken.Calendar), label: "Calendar"),
-          const BottomNavigationBarItem(
-              icon: Icon(IconBroken.Notification), label: "Notification"),
-        ],
+        items: itemBottomNavBat,
         elevation: 1,
       ),
     );

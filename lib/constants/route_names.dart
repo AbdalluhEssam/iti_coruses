@@ -8,6 +8,7 @@ class RouteNames {
   static const String taskDetailsScreen = "/TaskDetailsScreen";
   static const String chatScreen = "/ChatScreen";
   static const String newMassageScreen = "/NewMassageScreen";
+  static const String createNewTaskScreen = "/CreateNewTaskScreen";
   static const String chatDetailsScreen = "/ChatDetailsScreen";
   static const String testScreen = "/TestScreen";
 }
