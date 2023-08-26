@@ -53,7 +53,7 @@ Widget buildTasksBox() => SizedBox(
           },
           child: Container(
 
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
             width:((MediaQuery.of(context).size.width * 0.455).toInt()).toDouble(),
             height:((MediaQuery.of(context).size.width * 0.42).toInt()).toDouble(),
             decoration: BoxDecoration(
@@ -72,6 +72,7 @@ Widget buildTasksBox() => SizedBox(
                           .textTheme
                           .labelLarge!
                           .copyWith(color: Colors.white),
+                  maxLines: 3,
                 ),
                 Expanded(
                   child: Row(

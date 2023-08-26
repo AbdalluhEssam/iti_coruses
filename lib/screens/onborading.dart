@@ -60,7 +60,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     "Manage\nyour\nTask with",
                     style: TextStyle(
                         letterSpacing: 2,
-                        fontSize: 55,
+                        fontSize: 50,
                         height: 1,
                         fontFamily: "PilatExtended",
                         color: Colors.white),
@@ -69,7 +69,7 @@ class _OnBoardingState extends State<OnBoarding> {
                   Text(
                     "DayTask",
                     style: TextStyle(
-                        fontSize: 55,
+                        fontSize: 50,
                         fontFamily: "PilatExtended",
                         height: 1,
                         letterSpacing: 2,

@@ -29,7 +29,7 @@ class ThemeManager {
             ) ,
             labelLarge: const TextStyle(
               color: Colors.black,
-              fontSize: 21,
+              fontSize: 20,
               overflow: TextOverflow.visible,
               fontFamily: 'PilatExtended',
               fontWeight: FontWeight.bold,
