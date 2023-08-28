@@ -58,52 +58,51 @@ class CustomTextFormField extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-        Container(
-          color: colorBack ?? ColorManager.textFieldBackGround,
-          child: TextFormField(
-            keyboardType: keyboardType ?? TextInputType.text,
-            validator: validator,
-            controller: controller,
-            obscureText: isPassShow ?? false,
-            readOnly: readOnly ?? false,
-            maxLines: maxLines ?? 1,
-            minLines: 1,
-            style: const TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              // labelText: hintText ,
-              labelStyle: TextStyle(color: ColorManager.textColor),
-              border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xff455a64))),
-              enabledBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xff455a64))),
-              contentPadding: EdgeInsets.only(
-                  left: padding ?? 10, right: 10, top: 10, bottom: 10),
-              hintText: hintText,
-              hintStyle: TextStyle(color: ColorManager.textColor),
-              prefixIcon: prefixIconPressed != null
-                  ? IconButton(
-                      icon: Icon(
+        TextFormField(
+          keyboardType: keyboardType ?? TextInputType.text,
+          validator: validator,
+          controller: controller,
+          obscureText: isPassShow ?? false,
+          readOnly: readOnly ?? false,
+          maxLines: maxLines ?? 1,
+          minLines: 1,
+          style: const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            fillColor: colorBack ?? ColorManager.textFieldBackGround,
+            filled: true,
+            // labelText: hintText ,
+            labelStyle: TextStyle(color: ColorManager.textColor),
+            border: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xff455a64))),
+            enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: Color(0xff455a64))),
+            contentPadding: EdgeInsets.only(
+                left: padding ?? 10, right: 10, top: 10, bottom: 10),
+            hintText: hintText,
+            hintStyle: TextStyle(color: ColorManager.textColor),
+            prefixIcon: prefixIconPressed != null
+                ? IconButton(
+                    icon: Icon(
+                      prefixIcon,
+                      color: color ?? Colors.white,
+                    ),
+                    onPressed: prefixIconPressed,
+                  )
+                : prefixIcon != null
+                    ? Icon(
                         prefixIcon,
                         color: color ?? Colors.white,
-                      ),
-                      onPressed: prefixIconPressed,
-                    )
-                  : prefixIcon != null
-                      ? Icon(
-                          prefixIcon,
-                          color: color ?? Colors.white,
-                        )
-                      : null,
-              suffixIcon: suffixIcon != null
-                  ? IconButton(
-                      icon: Icon(
-                        suffixIcon,
-                        color: color ?? Colors.white,
-                      ),
-                      onPressed: suffixPressed,
-                    )
-                  : null,
-            ),
+                      )
+                    : null,
+            suffixIcon: suffixIcon != null
+                ? IconButton(
+                    icon: Icon(
+                      suffixIcon,
+                      color: color ?? Colors.white,
+                    ),
+                    onPressed: suffixPressed,
+                  )
+                : null,
           ),
         ),
       ],
