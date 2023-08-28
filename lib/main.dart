@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/screens/chat_screen.dart';
@@ -13,8 +14,15 @@ import 'package:iti_coruses/screens/third_screen.dart';
 import 'constants/route_names.dart';
 import 'constants/theme_manager.dart';
 
-void main() {
-  runApp(const ProviderScope(child: DayTaskApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+      supportedLocales: const [Locale('en', 'US'), Locale('ar', 'SR')],
+      path: 'assets/translations',
+      // <-- change the path of the translation files
+      fallbackLocale: const Locale('en', 'US'),
+      child: const ProviderScope(child: DayTaskApp())));
 }
 
 class DayTaskApp extends StatelessWidget {
@@ -38,14 +46,18 @@ class DayTaskApp extends StatelessWidget {
       initialRoute: RouteNames.onBoarding,
       routes: {
         RouteNames.onBoarding: (context) => const OnBoarding(),
-        RouteNames.testScreen: (context) => const TestScreen(title: "Test Screen"),
+        RouteNames.testScreen: (context) =>
+            const TestScreen(title: "Test Screen"),
         RouteNames.home: (context) => const HomeScreen(),
-        RouteNames.signInScreen: (context) => const SignInScreen(title: "SignIN"),
-        RouteNames.signUpScreen: (context) => const SignUpScreen(title: "Sign UP"),
+        RouteNames.signInScreen: (context) =>
+            const SignInScreen(title: "SignIN"),
+        RouteNames.signUpScreen: (context) =>
+            const SignUpScreen(title: "Sign UP"),
         RouteNames.taskDetailsScreen: (context) => const TaskDetailsScreen(),
         RouteNames.chatScreen: (context) => const ChatScreen(),
         RouteNames.newMassageScreen: (context) => const NewMassageScreen(),
-        RouteNames.createNewTaskScreen: (context) => const CreateNewTaskScreen(),
+        RouteNames.createNewTaskScreen: (context) =>
+            const CreateNewTaskScreen(),
         // RouteNames.chatDetailsScreen: (context) => const ChatDetailsScreen(assetName: '',),
       },
     );

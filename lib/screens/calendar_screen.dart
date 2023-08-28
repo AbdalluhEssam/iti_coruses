@@ -41,8 +41,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildTitleWithPadding(context,
-                DateFormat.MMMM().format(DateTime.now()).toString(), 26),
+            buildTitleWithPadding(context,DateFormat.MMMM().format(DateTime.now()).toString(), 26),
             SizedBox(
               height: 70,
               child: ListView.separated(
