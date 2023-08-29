@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
@@ -21,6 +20,9 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    const String websiteID = "5c5651be-a2d9-4c66-82dc-5fd1d7d63109";
+
     List pages = [
       const HomePage(),
       const ChatScreen(),
@@ -37,9 +39,19 @@ class HomeScreen extends ConsumerWidget {
             color: ColorManager.mustardYellow,
             height: 55,
             minWidth: 50,
-            onPressed: () {
+            onPressed: ()
+
+            // async {
+            //   await FlutterCrispChat.openCrispChat(
+            //     websiteID: websiteID,
+            //   );
+            // }
+
+            {
               context.navigator.pushNamed(RouteNames.newMassageScreen);
-            },
+            }
+
+            ,
             child: Icon(
               IconBroken.Plus,
               color: ColorManager.textField,
@@ -52,7 +64,6 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(toolbarHeight: 0,),
-      backgroundColor: ColorManager.textField,
       body: pages.elementAt(ref.watch(bottomBarIndexProvider)),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: ColorManager.textColor,
@@ -63,7 +74,6 @@ class HomeScreen extends ConsumerWidget {
         onTap: (value) {
           ref.read(bottomBarIndexProvider.notifier).update((int state) => value);
         },
-        backgroundColor: ColorManager.textField,
         selectedItemColor: ColorManager.mustardYellow,
         showSelectedLabels: true,
         showUnselectedLabels: true,

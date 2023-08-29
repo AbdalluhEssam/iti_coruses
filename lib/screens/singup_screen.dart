@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
+import 'package:iti_coruses/screens/profile__screen.dart';
 import 'package:iti_coruses/services/extension.dart';
 
 import '../constants/route_names.dart';
@@ -36,8 +38,9 @@ class _SignInScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: const MyAppBar(titleText: ""),
-      backgroundColor: ColorManager.textField,
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -46,20 +49,22 @@ class _SignInScreenState extends State<SignUpScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 Container(
-                  margin: const EdgeInsets.only(bottom: 45,top: 35),
+                  margin: const EdgeInsets.only(bottom: 40, top: 20),
                   alignment: Alignment.center,
-                  height: MediaQuery.of(context).size.width * 0.24,
+                  height: MediaQuery.of(context).size.width * 0.23,
                   child: Image.asset("assets/images/img.png"),
                 ),
-
-                const Text(
-                  "Create your account",
-                  style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                Consumer(
+                  builder: (context, ref, child) => Text(
+                    "Create your account",
+                    style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: (ref.watch(isDarkModelProvider)
+                            ? Colors.white
+                            : Colors.black)),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -113,9 +118,8 @@ class _SignInScreenState extends State<SignUpScreen> {
                   text: "Password",
                   hintText: "Password",
                   keyboardType: TextInputType.emailAddress,
-                  suffixIcon: isPassShow == true
-                      ? IconBroken.Hide
-                      : IconBroken.Show,
+                  suffixIcon:
+                      isPassShow == true ? IconBroken.Hide : IconBroken.Show,
                   prefixIcon: IconBroken.Lock,
                 ),
                 const SizedBox(
@@ -124,17 +128,18 @@ class _SignInScreenState extends State<SignUpScreen> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                     IconButton(
+                    IconButton(
                         alignment: AlignmentDirectional.centerStart,
-                        padding:const EdgeInsetsDirectional.only(start: 0,top: 8),
+                        padding:
+                            const EdgeInsetsDirectional.only(start: 0, top: 8),
                         onPressed: () {
                           isActive = !isActive;
-                          setState(() {
-
-                          });
+                          setState(() {});
                         },
                         icon: Icon(IconBroken.Tick_Square,
-                            color:isActive == true ? ColorManager.mustardYellow : ColorManager.textColor)),
+                            color: isActive == true
+                                ? ColorManager.mustardYellow
+                                : ColorManager.textColor)),
                     Flexible(
                       child: RichText(
                         text: TextSpan(
@@ -159,13 +164,11 @@ class _SignInScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 25,
                 ),
-
                 buildMaterialButton(context, () {
                   if (formState.currentState?.validate() == true) {
                     context.navigator.pushNamed(RouteNames.signInScreen);
                   }
-                }, "Sign Up",20),
-
+                }, "Sign Up", 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(
@@ -189,20 +192,30 @@ class _SignInScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-                OutlinedButton.icon(
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(width: 1.0, color: Colors.white),
-                      minimumSize: Size.copy(const Size(double.infinity, 65)),
-                    ),
-                    onPressed: () {},
-                    label:  Text("Google",
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: 18
-                        )),
-                    icon: Image.asset(
-                      "assets/images/img_5.png",
-                      width: 28,
-                    )),
+                Consumer(
+                  builder: (context, ref, child) => OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(
+                            width: 1.0,
+                            color: (ref.watch(isDarkModelProvider)
+                                ? Colors.white
+                                : Colors.black)),
+                        minimumSize: Size.copy(const Size(double.infinity, 65)),
+                      ),
+                      onPressed: () {},
+                      label: Text("Google",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(fontSize: 18)),
+                      icon: Image.asset(
+                        "assets/images/img_5.png",
+                        width: 30,
+                        color: (ref.watch(isDarkModelProvider)
+                            ? Colors.white
+                            : Colors.black),
+                      )),
+                ),
                 Container(
                   alignment: Alignment.center,
                   margin: const EdgeInsets.symmetric(

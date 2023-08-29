@@ -13,7 +13,7 @@ class NotificationsScreen extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(
         titleText: "Notifications",
-        leading: true,
+        leading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 25,right: 10),

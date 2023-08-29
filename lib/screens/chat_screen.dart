@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
-import 'package:iti_coruses/services/extension.dart';
 import 'package:iti_coruses/widgets/tab_bar_widget.dart';
 
 import '../widgets/chat_commpnent.dart';
@@ -39,14 +38,10 @@ class _ChatScreenState extends State<ChatScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: IconButton(
-                onPressed: () {
-                  context.navigator.pop();
-                },
-                icon: const Icon(IconBroken.Arrow___Left))),
+       appBar: AppBar(
+        leading:const Visibility(
+            visible: false,
+            child: Text("")),
         title: const Text("Messages"),
         actions: [
           Padding(

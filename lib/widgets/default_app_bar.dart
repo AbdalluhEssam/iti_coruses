@@ -28,7 +28,7 @@ class MyAppBar extends StatelessWidget implements PreferredSize {
               onPressed: () {
                 context.navigator.pop();
               },
-              icon: const Icon(IconBroken.Arrow___Left))) :null ,
+              icon: const Icon(IconBroken.Arrow___Left))) :Visibility(child: child) ,
       titleSpacing: titleSpacing ?? null,
       backgroundColor: context.theme.appBarTheme.backgroundColor,
     );

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
+import 'package:iti_coruses/screens/profile__screen.dart';
 import 'package:iti_coruses/services/extension.dart';
 
 import '../constants/icon_broken.dart';
@@ -35,8 +37,9 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: const MyAppBar(titleText: ""),
-      backgroundColor: ColorManager.textField,
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
@@ -123,7 +126,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   if (formState.currentState?.validate() == true) {
                     context.navigator.pushNamed(RouteNames.home);
                   }
-                }, "Log In" ,20),
+                }, "Log In", 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(
@@ -148,18 +151,30 @@ class _SignInScreenState extends State<SignInScreen> {
                     ],
                   ),
                 ),
-                OutlinedButton.icon(
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(width: 1.0, color: Colors.white),
-                      minimumSize: Size.copy(const Size(double.infinity, 65)),
-                    ),
-                    onPressed: () {},
-                    label: Text("Google",
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18)),
-                    icon: Image.asset(
-                      "assets/images/img_5.png",
-                      width: 28,
-                    )),
+                Consumer(
+                  builder: (context, ref, child) => OutlinedButton.icon(
+                      style: OutlinedButton.styleFrom(
+                        side: BorderSide(
+                            width: 1.0,
+                            color: (ref.watch(isDarkModelProvider)
+                                ? Colors.white
+                                : Colors.black)),
+                        minimumSize: Size.copy(const Size(double.infinity, 65)),
+                      ),
+                      onPressed: () {},
+                      label: Text("Google",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(fontSize: 18)),
+                      icon: Image.asset(
+                        "assets/images/img_5.png",
+                        width: 30,
+                        color: (ref.watch(isDarkModelProvider)
+                            ? Colors.white
+                            : Colors.black),
+                      )),
+                ),
                 Container(
                   alignment: Alignment.center,
                   margin: const EdgeInsets.symmetric(

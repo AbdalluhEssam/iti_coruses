@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
+import 'package:iti_coruses/screens/profile__screen.dart';
 import 'package:iti_coruses/widgets/custom_button_widget.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
 import 'package:iti_coruses/widgets/title_widget.dart';
@@ -28,7 +29,6 @@ class TaskDetailsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      backgroundColor: ColorManager.textField,
       appBar: MyAppBar(
         leading: true,
         titleText: "Task Details",
@@ -261,8 +261,8 @@ class TaskDetailsScreen extends ConsumerWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-        color: ColorManager.textField,
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+        color:ref.watch(isDarkModelProvider) ? ColorManager.textField : Colors.white,
         child: buildMaterialButton(context, () { }, "Add Task",20),
       ),
     );

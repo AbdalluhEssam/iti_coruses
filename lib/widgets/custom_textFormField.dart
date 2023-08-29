@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 
-class CustomTextFormField extends StatelessWidget {
+import '../screens/profile__screen.dart';
+
+class CustomTextFormField extends ConsumerWidget {
   final TextInputType? keyboardType;
   final String hintText;
   final String? text;
@@ -42,7 +45,7 @@ class CustomTextFormField extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context , WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -51,7 +54,7 @@ class CustomTextFormField extends StatelessWidget {
             text ?? "",
             style: TextStyle(
               fontSize: 15,
-              color: colorText ??  ColorManager.textColor,
+              color: colorText ?? (ref.watch(isDarkModelProvider) ? ColorManager.textColor : Colors.black) ,
             ),
           ),
         if (text != null)
@@ -66,9 +69,11 @@ class CustomTextFormField extends StatelessWidget {
           readOnly: readOnly ?? false,
           maxLines: maxLines ?? 1,
           minLines: 1,
-          style: const TextStyle(color: Colors.white),
+          style:  TextStyle(color: (ref.watch(isDarkModelProvider)
+              ? Colors.white
+              : Colors.black)),
           decoration: InputDecoration(
-            fillColor: colorBack ?? ColorManager.textFieldBackGround,
+            fillColor: colorBack ??  (ref.watch(isDarkModelProvider) ? ColorManager.textFieldBackGround : Colors.grey.shade300),
             filled: true,
             // labelText: hintText ,
             labelStyle: TextStyle(color: ColorManager.textColor),
@@ -84,21 +89,21 @@ class CustomTextFormField extends StatelessWidget {
                 ? IconButton(
                     icon: Icon(
                       prefixIcon,
-                      color: color ?? Colors.white,
+                      color: color ??(ref.watch(isDarkModelProvider) ? Colors.white : ColorManager.textFieldBackGround),
                     ),
                     onPressed: prefixIconPressed,
                   )
                 : prefixIcon != null
                     ? Icon(
                         prefixIcon,
-                        color: color ?? Colors.white,
+                        color: color ??(ref.watch(isDarkModelProvider) ? Colors.white : ColorManager.textFieldBackGround),
                       )
                     : null,
             suffixIcon: suffixIcon != null
                 ? IconButton(
                     icon: Icon(
                       suffixIcon,
-                      color: color ?? Colors.white,
+                      color:color ??(ref.watch(isDarkModelProvider) ? Colors.white : ColorManager.textFieldBackGround),
                     ),
                     onPressed: suffixPressed,
                   )

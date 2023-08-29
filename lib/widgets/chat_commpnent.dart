@@ -37,10 +37,7 @@ Widget buildChatGroupComponent(int itemCount,
               title: RichText(
                   text: TextSpan(
                       text: Faker().person.name(),
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.normal),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18),
                       children: [
                     if (title != null)
                       TextSpan(
@@ -93,7 +90,7 @@ Widget buildChatComponent(int itemCount,
               backgroundImage: AssetImage(Res.circleAvatar),
             ),
             title: Text(name,
-                style: const TextStyle(color: Colors.white, fontSize: 18)),
+                style:Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18)),
             subtitle: Text(
               "Hi, please check the last task, that I....",
               style: Theme.of(context)
@@ -145,10 +142,7 @@ Widget buildChatNewMassageComponent(
               backgroundImage: AssetImage(Res.circleAvatar),
             ),
             title: Text(name,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                style:Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18),
                 maxLines: 1),
             trailing: Text(
               name.characters.first,
@@ -185,7 +179,7 @@ Widget buildNotificationComponent(int itemCount,
                 text: TextSpan(
                   spellOut: true,
                     text: name,
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18),
                     children: [
                   TextSpan(
                     text: " left a comment in task",
@@ -196,8 +190,8 @@ Widget buildNotificationComponent(int itemCount,
               "Mobile App Design Project",
               style: Theme.of(context)
                   .textTheme
-                  .labelMedium!
-                  .copyWith(color: ColorManager.mustardYellow,fontWeight: FontWeight.normal),
+                  .headlineLarge!
+                  .copyWith(fontWeight: FontWeight.normal , fontSize: 14),
             ),
             dense: true,
             trailing: Text(

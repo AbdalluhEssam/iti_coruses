@@ -6,10 +6,12 @@ import 'package:iti_coruses/screens/create_new_task_screen.dart';
 import 'package:iti_coruses/screens/home_screen.dart';
 import 'package:iti_coruses/screens/newmassage_screen.dart';
 import 'package:iti_coruses/screens/onborading.dart';
+import 'package:iti_coruses/screens/profile__screen.dart';
 import 'package:iti_coruses/screens/singin_screen.dart';
 import 'package:iti_coruses/screens/singup_screen.dart';
 import 'package:iti_coruses/screens/task_details.dart';
 import 'package:iti_coruses/screens/third_screen.dart';
+import 'package:iti_coruses/translations/codegen_loader.g.dart';
 
 import 'constants/route_names.dart';
 import 'constants/theme_manager.dart';
@@ -18,31 +20,31 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
-      supportedLocales: const [Locale('en', 'US'), Locale('ar', 'SR')],
+      supportedLocales: const <Locale>[
+        Locale('en'),
+        Locale('ar')],
       path: 'assets/translations',
-      // <-- change the path of the translation files
+      useOnlyLangCode: true,
+      assetLoader: const CodegenLoader(),
+      saveLocale: true,
       fallbackLocale: const Locale('en', 'US'),
       child: const ProviderScope(child: DayTaskApp())));
 }
 
-class DayTaskApp extends StatelessWidget {
+class DayTaskApp extends ConsumerWidget {
   const DayTaskApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // TODO: implement build
     return MaterialApp(
       title: "Day Task",
       debugShowCheckedModeBanner: false,
-      // home: const FormScreen(),
-      theme: ThemeManager.shared.getAppTheme(context),
-      // Navigator.of(context).push(MaterialPageRoute(
-      //             builder: (context) {
-      //               return const FourthScreen(
-      //                 title: "Fourth Page",
-      //               );
-      //             },
-      //           ));
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      // theme: ThemeManager.shared.getAppTheme(context),
+      theme:ref.watch(isDarkModelProvider) ?ThemeManager.shared.getAppThemeDark(context) : ThemeManager.shared.getAppTheme(context),
       initialRoute: RouteNames.onBoarding,
       routes: {
         RouteNames.onBoarding: (context) => const OnBoarding(),

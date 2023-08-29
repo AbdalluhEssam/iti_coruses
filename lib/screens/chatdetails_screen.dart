@@ -74,12 +74,13 @@ class ChatDetailsScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-                child: ListView(physics: const BouncingScrollPhysics(), children: [
-              buildMessage(context, text: "Hi, please check the new task."),
+                child:
+                    ListView(physics: const BouncingScrollPhysics(), children: [
+              const BuildMessage(text: "Hi, please check the new task."),
               buildMyMessage(context, text: "Hi, please check the new task."),
-              buildMessage(context, text: "Got it. Thanks."),
-              buildMessage(context,text:"Hi, please check the last task, that I have completed."),
-              buildMessage(context, image: "assets/images/img_8.png"),
+              const BuildMessage(text: "Got it. Thanks."),
+              const BuildMessage(text:"Hi, please check the last task, that I have completed."),
+              const BuildMessage(text: "assets/images/img_8.png"),
               buildMyMessage(context, text: "Got it. Will check it soon."),
             ])),
             buildBottomNavBar(messageController),

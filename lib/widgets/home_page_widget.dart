@@ -26,10 +26,7 @@ Widget buildNameAndImage(
             ),
             Text(
               titleName ?? "Fazil Laghari",
-              style: const TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontFamily: "PilatExtended"),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
           ],
         ),
@@ -140,7 +137,7 @@ Widget buildTasksBox() => SizedBox(
       ),
     );
 
-Widget buildOngoingBox({required int itemCount}) => ListView.separated(
+Widget buildOngoingBox({required int itemCount , required Color colors}) => ListView.separated(
     physics: const NeverScrollableScrollPhysics(),
     shrinkWrap: true,
     itemBuilder: (context, index) {
@@ -152,7 +149,7 @@ Widget buildOngoingBox({required int itemCount}) => ListView.separated(
         width: double.infinity,
         height: 130,
         padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(color: ColorManager.textFieldBackGround),
+        decoration: BoxDecoration(color:colors ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

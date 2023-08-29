@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/constants/icon_broken.dart';
 import 'package:iti_coruses/widgets/custom_textFormField.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
+
+final StateProvider<bool> isDarkModelProvider =
+    StateProvider<bool>((StateProviderRef<bool> ref) {
+  return false;
+});
+
+final Provider<ThemeData> anotherDarkModeProvider =
+    Provider<ThemeData>((ProviderRef<ThemeData> ref) {
+  return ref.watch(isDarkModelProvider) ? ThemeData.dark() : ThemeData.light();
+});
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen(
@@ -28,6 +39,7 @@ class ProfileScreen extends StatelessWidget {
 
     userNameController.text = titleName;
     emailController.text = email;
+
     return Scaffold(
       appBar: const MyAppBar(
         titleText: "Profile",
@@ -177,9 +189,20 @@ class ProfileScreen extends StatelessWidget {
                   return null;
                 },
               ),
-               SizedBox(
-                height: MediaQuery.of(context).size.width * 0.112,
+              Consumer(
+                builder: (context, ref, child) => SwitchListTile.adaptive(
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: -10, vertical: 15),
+                    selected: true,
+                    title:  Text("Change Theme" ,style: Theme.of(context).textTheme.labelMedium?.copyWith(fontSize: 18)),
+                    value: ref.watch(isDarkModelProvider),
+                    onChanged: (bool isEnabled) {
+                      ref
+                          .read(isDarkModelProvider.notifier)
+                          .update((bool state) => isEnabled);
+                    }),
               ),
+
               SizedBox(
                 height: 55,
                 width: double.infinity,
@@ -193,14 +216,14 @@ class ProfileScreen extends StatelessWidget {
                       IconBroken.Logout,
                       color: ColorManager.textField,
                       size: 25,
-                      shadows: const [Shadow(color: Colors.black, blurRadius: 2)],
+                      shadows: const [
+                        Shadow(color: Colors.black, blurRadius: 2)
+                      ],
                     ),
                     label: Text(
                       "Logout",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: ColorManager.textField, fontSize: 18),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: ColorManager.textField, fontSize: 18),
                     )),
               )
             ],

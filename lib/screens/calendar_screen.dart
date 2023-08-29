@@ -29,7 +29,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(titleText: "Schedule", leading: true, actions: [
+      appBar: MyAppBar(titleText: "Schedule",         leading: false,
+          actions: [
         IconButton(
             onPressed: () {
               context.navigator.pushNamed(RouteNames.createNewTaskScreen);

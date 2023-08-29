@@ -1,40 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 
 import '../constants/icon_broken.dart';
+import '../screens/providers_screens/state_provider.dart';
 import 'custom_textFormField.dart';
+class BuildMessage extends ConsumerWidget {
+  final String? text;
+  final String? image;
 
-Widget buildMessage(context, {String? text, String? image}) => Align(
+  const BuildMessage( {
+    Key? key,
+    this.text, this.image,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context,WidgetRef ref) {
+    return Align(
       alignment: AlignmentDirectional.centerStart,
       child: text != null
           ? Container(
-              constraints: const BoxConstraints(maxWidth: 300),
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                  color: ColorManager.backFormColor,
-                  borderRadius: const BorderRadiusDirectional.only(
-                    bottomEnd: Radius.circular(5),
-                    bottomStart: Radius.circular(5),
-                    topEnd: Radius.circular(5),
-                  )),
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontFamily: "Inter",
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            )
+        constraints: const BoxConstraints(maxWidth: 300),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+            color:ref.watch(isDarkModelProvider) ? ColorManager.textField : ColorManager.backFormColor,
+            borderRadius: const BorderRadiusDirectional.only(
+              bottomEnd: Radius.circular(5),
+              bottomStart: Radius.circular(5),
+              topEnd: Radius.circular(5),
+            )),
+        child: Text(
+          text?? "",
+          style: const TextStyle(
+            fontSize: 16,
+            fontFamily: "Inter",
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+      )
           : Container(
-              constraints: const BoxConstraints(maxWidth: 250, maxHeight: 213),
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              child: Image.asset(
-                image!,
-                fit: BoxFit.cover,
-              )),
+          constraints: const BoxConstraints(maxWidth: 250, maxHeight: 213),
+          margin: const EdgeInsets.symmetric(vertical: 10),
+          child: Image.asset(
+            image!,
+            fit: BoxFit.cover,
+          )),
     );
+  }
+}
 
 Widget buildMyMessage(context, {String? text, String? image}) => Align(
       alignment: AlignmentDirectional.centerEnd,
