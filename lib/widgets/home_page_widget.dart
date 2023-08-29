@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:iti_coruses/services/extension.dart';
 import 'package:iti_coruses/widgets/stack_image_widget.dart';
 
