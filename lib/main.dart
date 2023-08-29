@@ -45,7 +45,7 @@ class DayTaskApp extends ConsumerWidget {
       locale: context.locale,
       // theme: ThemeManager.shared.getAppTheme(context),
       theme:ref.watch(isDarkModelProvider) ?ThemeManager.shared.getAppThemeDark(context) : ThemeManager.shared.getAppTheme(context),
-      initialRoute: RouteNames.onBoarding,
+      initialRoute: RouteNames.home,
       routes: {
         RouteNames.onBoarding: (context) => const OnBoarding(),
         RouteNames.testScreen: (context) =>

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/services/extension.dart';
 
@@ -22,13 +23,16 @@ class MyAppBar extends StatelessWidget implements PreferredSize {
     return AppBar(
       title: Text(titleText),
       actions: actions ?? [],
-      leading: leading == true? Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: IconButton(
+      leading: leading == true
+          ? IconButton(
               onPressed: () {
                 context.navigator.pop();
               },
-              icon: const Icon(IconBroken.Arrow___Left))) :Visibility(child: child) ,
+              icon: EasyLocalization.of(context)?.currentLocale ==
+                      const Locale("en")
+                  ? const Icon(IconBroken.Arrow___Left)
+                  : const Icon(IconBroken.Arrow___Right))
+          : Visibility(child: child),
       titleSpacing: titleSpacing ?? null,
       backgroundColor: context.theme.appBarTheme.backgroundColor,
     );

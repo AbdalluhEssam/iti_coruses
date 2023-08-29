@@ -113,8 +113,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           child: Container(
                             height: 75,
                             constraints: const BoxConstraints(minHeight: 75),
-                            padding: const EdgeInsets.only(
-                                left: 0, right: 15, top: 0, bottom: 0),
+                            padding: const EdgeInsetsDirectional.only(
+                                start: 0, end: 15, top: 0, bottom: 0),
                             color: isSelectedListTitle == index
                                 ? ColorManager.mustardYellow
                                 : ColorManager.backFormColor,

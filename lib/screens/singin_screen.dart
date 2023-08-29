@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -58,12 +59,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   height: MediaQuery.of(context).size.height * 0.115,
                   child: Image.asset("assets/images/img.png"),
                 ),
-                const Text(
-                  "Welcome Back!",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                Text(
+                  "Welcome_Back".tr(),
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -75,8 +76,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     }
                     return null;
                   },
-                  text: "Email Address",
-                  hintText: "Email",
+                  text: "Email_Address".tr(),
+                  hintText: "Enter_your_email".tr(),
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: IconBroken.Profile,
                   controller: emailController,
@@ -98,8 +99,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       isPassShow = !isPassShow;
                     });
                   },
-                  text: "Password",
-                  hintText: "Password",
+                  text: "Password".tr(),
+                  hintText: "Password".tr(),
                   keyboardType: TextInputType.emailAddress,
                   suffixIcon:
                       isPassShow == true ? IconBroken.Hide : IconBroken.Show,
@@ -111,7 +112,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: InkWell(
                     onTap: () {},
                     child: Text(
-                      "Forgot Password?",
+                      "Forget_Password".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         color: ColorManager.textColor,
@@ -126,7 +127,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   if (formState.currentState?.validate() == true) {
                     context.navigator.pushNamed(RouteNames.home);
                   }
-                }, "Log In", 20),
+                }, "Log_In".tr(), 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(
@@ -137,7 +138,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: 110,
                         color: ColorManager.textColor,
                       ),
-                      Text("Or continue with",
+                      Text("Or_continue_with".tr(),
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -162,7 +163,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         minimumSize: Size.copy(const Size(double.infinity, 65)),
                       ),
                       onPressed: () {},
-                      label: Text("Google",
+                      label: Text("google".tr(),
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
@@ -185,12 +186,12 @@ class _SignInScreenState extends State<SignInScreen> {
                         context.navigator.pushNamed(RouteNames.signUpScreen);
                       },
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
-                        Text("Don’t have an account?",
+                        Text("Don't_have_an_account".tr(),
                             style: TextStyle(
                               color: ColorManager.textColor,
                               fontSize: 16,
                             )),
-                        Text(" Sign Up",
+                        Text("Sign_Up".tr(),
                             style: TextStyle(
                               color: ColorManager.mustardYellow,
                               fontSize: 17,

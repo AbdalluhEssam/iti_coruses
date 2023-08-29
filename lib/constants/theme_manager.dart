@@ -9,9 +9,9 @@ class ThemeManager {
   static ThemeManager shared = ThemeManager._();
 
   getAppTheme(BuildContext context) => ThemeData.light().copyWith(
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: Colors.grey[200],
       bottomNavigationBarTheme:
-          const BottomNavigationBarThemeData(backgroundColor: Colors.white),
+          BottomNavigationBarThemeData(backgroundColor: Colors.grey[200]!),
       primaryColor: ColorManager.mustardYellow,
       backgroundColor: ColorManager.backFormColor,
       textTheme: const TextTheme(
@@ -52,13 +52,13 @@ class ThemeManager {
           fontFamily: 'Cairo',
         ),
       ),
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
           elevation: 0,
           foregroundColor: Colors.black,
           systemOverlayStyle: SystemUiOverlayStyle(
               statusBarIconBrightness: Brightness.dark,
-              statusBarColor: Colors.white),
-          backgroundColor: Colors.white,
+              statusBarColor: Colors.grey[200]!),
+          backgroundColor: Colors.grey[200]!,
           centerTitle: true));
 
   getAppThemeDark(BuildContext context) => ThemeData.dark().copyWith(

@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:iti_coruses/services/extension.dart';
@@ -21,7 +22,7 @@ Widget buildNameAndImage(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Welcome Back!",
+              "Welcome_Back".tr(),
               style: TextStyle(fontSize: 15, color: ColorManager.mustardYellow),
             ),
             Text(
@@ -76,7 +77,7 @@ Widget buildTasksBox() => SizedBox(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Team members",
+                        "Team_members".tr(),
                         style: TextStyle(
                             fontSize: 11,
                             fontFamily: "Inter",
@@ -150,8 +151,7 @@ Widget buildOngoingBox({required int itemCount , required Color colors}) => List
         height: 130,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(color:colors ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Wrap(
           children: [
             Text(
               "Mobile App Wireframe",
@@ -168,7 +168,7 @@ Widget buildOngoingBox({required int itemCount , required Color colors}) => List
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Team members",
+                        "Team_members".tr(),
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                       buildStackImage(length: 3, left: true),
@@ -176,14 +176,14 @@ Widget buildOngoingBox({required int itemCount , required Color colors}) => List
                         height: 8,
                       ),
                       Text(
-                        "Due on : ${DateFormat("d MMMM").format(date)}",
+                       "${"Due_on".tr()} : ${DateFormat("d MMMM","${EasyLocalization.of(context)!.currentLocale}").format(date)}",
                         style: Theme.of(context).textTheme.labelMedium,
                       )
                     ],
                   ),
                 ),
                 Stack(
-                  alignment: Alignment.center,
+                  alignment: AlignmentDirectional.center,
                   children: [
                     SizedBox(
                       width: 59,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
@@ -31,8 +32,8 @@ class HomeScreen extends ConsumerWidget {
       const NotificationsScreen(),
     ];
     List<BottomNavigationBarItem> itemBottomNavBat = [
-      const BottomNavigationBarItem(icon: Icon(IconBroken.Home), label: "Home"),
-      const BottomNavigationBarItem( icon: Icon(IconBroken.Chat), label: "Chat"),
+       BottomNavigationBarItem(icon: const Icon(IconBroken.Home), label: "home".tr()),
+       BottomNavigationBarItem( icon: const Icon(IconBroken.Chat), label: "Chat".tr()),
       BottomNavigationBarItem( icon: Transform.translate(
         offset: const Offset(0, 5),
         child: MaterialButton(
@@ -58,8 +59,8 @@ class HomeScreen extends ConsumerWidget {
               size: 30,
             )),
       ),label: ""),
-      const BottomNavigationBarItem(icon: Icon(IconBroken.Calendar), label: "Calendar"),
-      const BottomNavigationBarItem(icon: Icon(IconBroken.Notification), label: "Notification"),
+       BottomNavigationBarItem(icon: const Icon(IconBroken.Calendar), label: "Calendar".tr()),
+       BottomNavigationBarItem(icon: const Icon(IconBroken.Notification), label: "Notification".tr()),
     ];
 
     return Scaffold(

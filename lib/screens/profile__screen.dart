@@ -5,6 +5,8 @@ import 'package:iti_coruses/constants/icon_broken.dart';
 import 'package:iti_coruses/widgets/custom_textFormField.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
 
+import '../translations/codegen_loader.g.dart';
+
 final StateProvider<bool> isDarkModelProvider =
     StateProvider<bool>((StateProviderRef<bool> ref) {
   return false;
@@ -38,6 +40,7 @@ class ProfileScreen extends StatelessWidget {
     TextEditingController settingController = TextEditingController();
 
     userNameController.text = titleName;
+    settingController.text = "EN / AR";
     emailController.text = email;
 
     return Scaffold(
@@ -176,11 +179,14 @@ class ProfileScreen extends StatelessWidget {
                 height: 26,
               ),
               CustomTextFormField(
-                prefixIcon: IconBroken.Setting,
-                suffixIcon: IconBroken.Arrow___Down_2,
-                suffixPressed: () {},
+                prefixIcon: Icons.language_outlined,
+                suffixIcon: IconBroken.Swap,
+                suffixPressed: () {
+                  LocalizationChecker.changeLanguage(context);
+                },
+                readOnly: true,
                 color: ColorManager.textColor,
-                hintText: "Setting",
+                hintText: "Choose Language",
                 controller: settingController,
                 validator: (val) {
                   if (val?.isEmpty == true) {

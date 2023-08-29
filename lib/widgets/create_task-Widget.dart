@@ -11,7 +11,7 @@ Widget buildCreateNewTask(int length,context) => Row(
     ...List.generate(length, (index) => Container(
       width: MediaQuery.of(context).size.width *0.38,
       height: 41,
-      padding: const EdgeInsets.only(left: 10),
+      padding: const EdgeInsetsDirectional.only(start: 10),
       decoration:
       BoxDecoration(color: ColorManager.textFieldBackGround),
       child: Row(

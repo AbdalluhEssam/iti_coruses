@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/widgets/default_app_bar.dart';
@@ -11,8 +12,8 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(
-        titleText: "Notifications",
+      appBar:  MyAppBar(
+        titleText: "Notification".tr(),
         leading: false,
       ),
       body: Padding(

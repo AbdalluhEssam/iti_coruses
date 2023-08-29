@@ -177,7 +177,6 @@ Widget buildNotificationComponent(int itemCount,
             ),
             title: RichText(
                 text: TextSpan(
-                  spellOut: true,
                     text: name,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 18),
                     children: [

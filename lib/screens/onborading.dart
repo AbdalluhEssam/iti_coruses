@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_coruses/constants/color_manager.dart';
 import 'package:iti_coruses/services/extension.dart';
@@ -22,10 +23,10 @@ class _OnBoardingState extends State<OnBoarding> {
         toolbarHeight: 0,
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: buildMaterialButton(context, () {
           context.navigator.pushNamed(RouteNames.signInScreen);
-        }, "Let’s Start"),
+        }, "Let's_Start".tr()),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -57,18 +58,17 @@ class _OnBoardingState extends State<OnBoarding> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      "Manage\nyour\nTask with",
-                      style: TextStyle(
-                          letterSpacing: 2,
-                          fontSize: 50,
-                          height: 1,
-                          fontFamily: "PilatExtended",
-                          color: Colors.white),
+                    Text(
+                      "Manage_your_Task_with".tr(),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            letterSpacing: 2,
+                            fontSize: 50,
+                            height: 1,
+                          ),
                       textAlign: TextAlign.justify,
                     ),
                     Text(
-                      "DayTask",
+                      "DayTask".tr(),
                       style: TextStyle(
                           fontSize: 50,
                           fontFamily: "PilatExtended",

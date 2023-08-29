@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Widget buildStackImage({double? height,required int length ,bool? left})=>  SizedBox(
   height: height ?? 30,
   child: Stack(
-    alignment: Alignment.center,
+    alignment: AlignmentDirectional.center,
     children: [
       ...List.generate(
         length,
@@ -17,9 +17,9 @@ Widget buildStackImage({double? height,required int length ,bool? left})=>  Size
                 return a;
               });
           end.insert(0, 0);
-          return Positioned(
-              left:left == true? end[index] : null,
-              right:left == false? end[index] : null,
+          return PositionedDirectional(
+              start:left == true? end[index] : null,
+              end:left == false? end[index] : null,
               child:
               const CircleAvatar(
                 radius: 10,

@@ -96,7 +96,8 @@ class _CreateNewTaskScreenState extends State<CreateNewTaskScreen> {
                               onPressed: () {},
                               icon: const Icon(
                                 Icons.watch_later_outlined,
-                                size: 28,
+                                size: 28,                                color: Colors.black,
+
                               )),
                         ),
                         Expanded(
@@ -172,6 +173,7 @@ class _CreateNewTaskScreenState extends State<CreateNewTaskScreen> {
                               icon: const Icon(
                                 IconBroken.Calendar,
                                 size: 28,
+                                color: Colors.black,
                               )),
                         ),
                         Expanded(

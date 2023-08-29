@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iti_coruses/res.dart';
@@ -43,7 +44,7 @@ class HomePage extends ConsumerWidget {
                   children: [
                     Expanded(
                       child: CustomTextFormField(
-                        hintText: "Search tasks",
+                        hintText: "Search_tasks".tr(),
                         prefixIcon: IconBroken.Search,
                         controller: searchController,
                         validator: (val) {
@@ -74,7 +75,7 @@ class HomePage extends ConsumerWidget {
               ),
               Column(
                 children: [
-                  buildTitleWithRow(context, title: "Completed Tasks", subTitle: "See all"),
+                  buildTitleWithRow(context, title: "CompletedTasks".tr(), subTitle: "see_all".tr()),
                   buildTasksBox()
                 ],
               ),
@@ -82,7 +83,7 @@ class HomePage extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Column(
                   children: [
-                    buildTitleWithRow(context, title: "Ongoing Projects", subTitle: "See all"),
+                    buildTitleWithRow(context, title: tr("ongoingProjects"), subTitle: "see_all".tr()),
                     buildOngoingBox(itemCount: 10, colors:(ref.watch(isDarkModelProvider)
                         ? ColorManager.textFieldBackGround
                         : Colors.grey.withOpacity(0.5)) )

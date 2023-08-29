@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -57,7 +58,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                 ),
                 Consumer(
                   builder: (context, ref, child) => Text(
-                    "Create your account",
+                    "Create_your_account".tr(),
                     style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -76,8 +77,8 @@ class _SignInScreenState extends State<SignUpScreen> {
                     }
                     return null;
                   },
-                  text: "Full Name",
-                  hintText: "Full Name",
+                  text: "Name".tr(),
+                  hintText: "Full_Name".tr(),
                   keyboardType: TextInputType.name,
                   prefixIcon: IconBroken.User,
                   controller: emailController,
@@ -92,8 +93,8 @@ class _SignInScreenState extends State<SignUpScreen> {
                     }
                     return null;
                   },
-                  text: "Email Address",
-                  hintText: "Email",
+                  text: "Email_Address".tr(),
+                  hintText: "Enter_your_email".tr(),
                   keyboardType: TextInputType.emailAddress,
                   prefixIcon: IconBroken.Profile,
                   controller: emailController,
@@ -115,8 +116,8 @@ class _SignInScreenState extends State<SignUpScreen> {
                       isPassShow = !isPassShow;
                     });
                   },
-                  text: "Password",
-                  hintText: "Password",
+                  text: "Password".tr(),
+                  hintText: "Password".tr(),
                   keyboardType: TextInputType.emailAddress,
                   suffixIcon:
                       isPassShow == true ? IconBroken.Hide : IconBroken.Show,
@@ -143,14 +144,14 @@ class _SignInScreenState extends State<SignUpScreen> {
                     Flexible(
                       child: RichText(
                         text: TextSpan(
-                            text: "I have read & agreed to DayTask",
+                            text: "I_have_read_&_agreed".tr(),
                             style: TextStyle(
                               color: ColorManager.textColor,
                               fontSize: 14,
                             ),
                             children: [
                               TextSpan(
-                                text: "  Privacy Policy, Terms & Condition",
+                                text: "Privacy_Policy".tr(),
                                 style: TextStyle(
                                   color: ColorManager.mustardYellow,
                                   fontSize: 14,
@@ -168,7 +169,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                   if (formState.currentState?.validate() == true) {
                     context.navigator.pushNamed(RouteNames.signInScreen);
                   }
-                }, "Sign Up", 20),
+                }, "Sign_Up".tr(), 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 30),
                   child: Row(
@@ -179,7 +180,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                         width: 110,
                         color: ColorManager.textColor,
                       ),
-                      Text("Or continue with",
+                      Text("Or_continue_with".tr(),
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -203,7 +204,7 @@ class _SignInScreenState extends State<SignUpScreen> {
                         minimumSize: Size.copy(const Size(double.infinity, 65)),
                       ),
                       onPressed: () {},
-                      label: Text("Google",
+                      label: Text("google".tr(),
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
@@ -226,12 +227,12 @@ class _SignInScreenState extends State<SignUpScreen> {
                         context.navigator.pushNamed(RouteNames.signInScreen);
                       },
                       child: Row(mainAxisSize: MainAxisSize.min, children: [
-                        Text("Already have an account?",
+                        Text("Already_have_an_account".tr(),
                             style: TextStyle(
                               color: ColorManager.textColor,
                               fontSize: 16,
                             )),
-                        Text(" Log In",
+                        Text("Log_In".tr(),
                             style: TextStyle(
                               color: ColorManager.mustardYellow,
                               fontSize: 17,
