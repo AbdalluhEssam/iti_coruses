@@ -74,7 +74,7 @@ class CodegenLoader extends AssetLoader {
     "Search_tasks": "ابحث عن مهمه",
     "Team_members": "أعضاء الفريق",
     "Due_on": "يحدث فى",
-    "home": "الصحفة الرئيسية",
+    "home": "الرئيسية",
     "Chat": "المحادثات",
     "Calendar": "التقويم",
     "Notification": "الاشعارات",
