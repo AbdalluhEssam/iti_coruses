@@ -53,6 +53,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     // width: size.width *0.2,
                     alignment: Alignment.center,
                   )),
+              const SizedBox(height: 30,),
               SizedBox(
                 width: double.infinity,
                 child: Column(

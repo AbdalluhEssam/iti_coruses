@@ -9,7 +9,7 @@ import '../translations/codegen_loader.g.dart';
 
 final StateProvider<bool> isDarkModelProvider =
     StateProvider<bool>((StateProviderRef<bool> ref) {
-  return false;
+  return true;
 });
 
 final Provider<ThemeData> anotherDarkModeProvider =
